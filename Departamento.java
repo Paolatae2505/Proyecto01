@@ -35,7 +35,12 @@ public class Departamento implements Producto{
     } 
     
     public void mostrarInformacion(){
-         /// Ver que formato le dare jaja 
+        int i = 1;
+         for(Producto producto : productos){
+             System.out.println("Numero de producto :" +i);
+             producto.mostrarInformacion();
+             i++; 
+         }
     }
 
     public List<Producto> getListaDeProductos(){
