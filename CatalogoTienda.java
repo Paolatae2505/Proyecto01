@@ -6,7 +6,8 @@ public class CatalogoTienda implements Catalogo , Producto{
     private String codigo;
 
 
-    public CatalogoTienda(){
+    public CatalogoTienda(AlamacenCheemsMart almacenCheemsMart){
+            this.almacenCheemsMart = almacenCheemsMart;
             CheemsMart.inventario();
             codigo = "2505-3095";
     }
