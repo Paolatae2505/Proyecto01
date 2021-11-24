@@ -13,7 +13,7 @@ public class ClienteTienda {
     private static int numeroID = 0;
 
     public ClienteTienda(String nombreUsuario, String nombre, String contraseña,
-    String telefono , CuentaBancaria cuentaBancaria , String pais){
+                         String telefono, CuentaBancaria cuentaBancaria, String pais) {
         this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
         this.contraseña = contraseña;
@@ -24,34 +24,35 @@ public class ClienteTienda {
         numeroID++;
     }
 
-    public void pagarCompra(double dinero){
+    public void pagarCompra(double dinero) {
         cuentaBancaria.transaccion(dinero);
         //cuentaBancaria.visualizarEstadoActual();
 
     }
 
-    public void reportar(){
+    public void reportar() {
         System.out.println("Nombre : " + nombre);
         System.out.println("Nombre  Usuario : " + nombreUsuario);
         System.out.println("Telefono : " + telefono);
         System.out.println("Pais: " + pais);
         System.out.println("ID : " + ID);
         System.out.println("Nombre : " + nombre);
-        System.out.println("Estado Cuenta :" + cuentaBancaria.visualizarEstadoActual());
+        System.out.println("Estado Cuenta : \n");
+        cuentaBancaria.visualizarEstadoActual();
 
     }
 
-    public CuentaBancaria getCuentaBancaria(){
+    public CuentaBancaria getCuentaBancaria() {
         return cuentaBancaria;
     }
 
-    public Correo getCorreo(){
+    public Correo getCorreo() {
         return correo;
     }
 
-    public String getID(){
+    public String getID() {
         return ID;
     }
 
-    
+
 }

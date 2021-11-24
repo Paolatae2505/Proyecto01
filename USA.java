@@ -1,16 +1,16 @@
 import java.util.List;
 
-public class Mexico implements TiendaVirutalPais {
+public class USA implements TiendaVirutalPais {
     private double descuento = 0;
-    private volatile static TiendaVirutalPais tiendaVirtualMexico;
+    private volatile static TiendaVirutalPais tiendaVirtualUSA;
     private Cliente cliente;
 
-    private Mexico(Cliente cliente) {
+    private USA(Cliente cliente) {
         this.cliente = cliente;
     }
 
     public void saludo() {
-        System.out.println("Bienvenida(o) a Cheems Mart Mexico!");
+        System.out.println("Welcome to Cheems Mart USA!");
     }
 
     public double cobrar(List<Producto> carritoDeCompra, String IDCliente) {
@@ -34,8 +34,7 @@ public class Mexico implements TiendaVirutalPais {
     }
 
     public void despedida() {
-        System.out.println("Cheems Mart Mexico agradece su compra!" +
-                "\nVuelva pronto!");
+        System.out.println("Thank you for your purchase!");
     }
 
 
@@ -48,11 +47,11 @@ public class Mexico implements TiendaVirutalPais {
     }
 
     public static TiendaVirutalPais getTiendaVirtual() {
-        return tiendaVirtualMexico;
+        return tiendaVirtualUSA;
     }
 
-    public static void setTiendaVirtualEspana(TiendaVirutalPais tiendaVirtualMexico) {
-        Mexico.tiendaVirtualMexico = tiendaVirtualMexico;
+    public static void setTiendaVirtualEspana(TiendaVirutalPais tiendaVirtualUSA) {
+        USA.tiendaVirtualUSA = tiendaVirtualUSA;
     }
 
     public Cliente getCliente() {

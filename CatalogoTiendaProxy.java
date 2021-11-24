@@ -1,65 +1,73 @@
-public class CatalogoTiendaProxy implements Catalogo, Producto{
+public class CatalogoTiendaProxy implements Catalogo, Producto {
 
     private CatalogoTienda catalogoTiendaReal;
     private String codigo;
 
-    public CatalogoTiendaProxy(CatalogoTienda catalogoTiendaReal){
-            this.catalogoTiendaReal = catalogoTiendaReal;
-    }
-    public void mostrarDepartamentoDeBebidas(){      
-        catalogoTiendaReal.mostrarDepartamentoDeBebidas();  
+    public CatalogoTiendaProxy(CatalogoTienda catalogoTiendaReal) {
+        this.catalogoTiendaReal = catalogoTiendaReal;
     }
 
-    public void mostrarDepartamentoDeBelleza(){
+    public void mostrarDepartamentoDeBebidas() {
+        catalogoTiendaReal.mostrarDepartamentoDeBebidas();
+    }
+
+    public void mostrarDepartamentoDeBelleza() {
         catalogoTiendaReal.mostrarDepartamentoDeBelleza();
     }
 
-    public void mostrarDepartamentoDeDulces(){
+    public void mostrarDepartamentoDeDulces() {
         catalogoTiendaReal.mostrarDepartamentoDeDulces();
     }
-    public void mostrarDepartamentoDeAlimentosFrescos(){
+
+    public void mostrarDepartamentoDeAlimentosFrescos() {
         catalogoTiendaReal.mostrarDepartamentoDeAlimentosFrescos();
     }
 
-    public void mostrarDepartamentoElectrodomesticos(){
+    public void mostrarDepartamentoElectrodomesticos() {
         catalogoTiendaReal.mostrarDepartamentoElectrodomesticos();
     }
-    public void mostrarDepartamentoEmpaquetados(){
-       catalogoTiendaReal.mostrarDepartamentoEmpaquetados();
+
+    public void mostrarDepartamentoEmpaquetados() {
+        catalogoTiendaReal.mostrarDepartamentoEmpaquetados();
     }
 
-    public void mostrarDepartamentoElectronica(){
-       catalogoTiendaReal.mostrarDepartamentoElectronica();
+    public void mostrarDepartamentoElectronica() {
+        catalogoTiendaReal.mostrarDepartamentoElectronica();
     }
-    public void mostrarInformacion(){
+
+    public void mostrarInformacion() {
         catalogoTiendaReal.mostrarInformacion();
     }
-    public double getPrecio(){
+
+    public double getPrecio() {
         double precio = 0;
-        if(checarAcceso()){
+        if (checarAcceso()) {
             precio = catalogoTiendaReal.getPrecio();
         }
         return precio;
     }
-    public String getNombre(){
+
+    public String getNombre() {
         String nombre = "";
-        if(checarAcceso()){
-        nombre =  catalogoTiendaReal.getNombre();
+        if (checarAcceso()) {
+            nombre = catalogoTiendaReal.getNombre();
         }
         return nombre;
     }
-    public String getCodigo(){
+
+    public String getCodigo() {
         String codigo = "";
-        if(checarAcceso()){
+        if (checarAcceso()) {
             codigo = catalogoTiendaReal.getNombre();
         }
         return codigo;
     }
-    public boolean checarAcceso(){
-       return catalogoTiendaReal.getCodigo().equals(codigo);   
+
+    public boolean checarAcceso() {
+        return catalogoTiendaReal.getCodigo().equals(codigo);
     }
 
-    public void setCodigo(String codigo){
-             this.codigo = codigo;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 }
