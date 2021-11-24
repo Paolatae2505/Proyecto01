@@ -7,8 +7,7 @@ public class Correo implements Observador {
         this.notificacion = notificacion;
     }
 
-    public String getNotificacion(){
+    public String getNotificacion() {
         return notificacion;
     }
-
 }

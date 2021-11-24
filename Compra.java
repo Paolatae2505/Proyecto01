@@ -5,7 +5,7 @@ public class Compra {
 
     private List<ProductoCheemsMart> carritoDeCompra = new ArrayList<>();
 
-    public void agregarProdcuto(ProductoCheemsMart producto) {
+    public void agregarProducto(ProductoCheemsMart producto) {
         carritoDeCompra.add(producto);
     }
 

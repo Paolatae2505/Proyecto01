@@ -14,7 +14,7 @@ public class AlmacenCheemsMart implements Producto {
 
     public void llenarDepartamentoDeElectronica() {
         Departamento deptoElectronica = new Departamento("Electronica");
-        List<Producto> productosElectronica = new ArrayList<Producto>();
+        List<ProductoCheemsMart> productosElectronica = new ArrayList<>();
         productosElectronica.add(new ProductoCheemsMart("Reloj", 6800, "Electronica", "a4530gf"));
         productosElectronica.add(new ProductoCheemsMart("Televisión HD", 7200, "Electronica", "a4530gg"));
         productosElectronica.add(new ProductoCheemsMart("Radio", 600, "Electronica", "a4530gh"));
@@ -57,7 +57,7 @@ public class AlmacenCheemsMart implements Producto {
         return null;
     }
 
-    public void agregarProductoDeDepartamento(Producto nuevoProducto, String departamento) {
+    public void agregarProductoDeDepartamento(ProductoCheemsMart nuevoProducto, String departamento) {
         for (Departamento d : departamentos) {
             if (d.getNombre().equals(departamento)) {
                 d.agregarProducto(nuevoProducto);
@@ -67,7 +67,12 @@ public class AlmacenCheemsMart implements Producto {
         }
     }
 
-    public void eliminarProducto(Producto nuevoProducto, String departamento) {
+    public void eliminarProducto(Producto producto, String departamento) {
+        for (Departamento d : departamentos) {
+            if (d.getNombre().equals(departamento)) {
+                d.eliminarProducto(producto);
+            }
+        }
     }
 
     public double getPrecio() {

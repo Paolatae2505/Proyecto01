@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.List;
 
 public class Mexico implements TiendaVirutalPais {
@@ -13,24 +14,31 @@ public class Mexico implements TiendaVirutalPais {
         System.out.println("Bienvenida(o) a Cheems Mart Mexico!");
     }
 
-    public double cobrar(List<Producto> carritoDeCompra, String IDCliente) {
-        return 0;
+    public double cobrar(List<ProductoCheemsMart> carritoDeCompra) {
+        double cuenta = 0;
+        for (ProductoCheemsMart p : carritoDeCompra) {
+            if (p.getDepartamento().equals("Alimentos")) {
+                cuenta = cuenta + ((p.getPrecio() * descuento) / 100);
+            } else {
+                cuenta = cuenta + p.getPrecio();
+            }
+        }
+        return cuenta;
     }
 
     public double descuentoRandom() {
-        return 0;
+        descuento = (((int) (Math.random() * (5 - 1))) + 1) * 10;
+        return descuento;
     }
 
-    public double aplicarDescuento(Producto producto) {
-        return 0;
-    }
-
-    public String mensajeDescuento() {
-        return null;
+    public String mensajeDescuento(double descuento) {
+        return "Tienes un " + descuento + "% de descuento en alimentos!";
     }
 
     public void fechaEstimada() {
-
+        LocalDate hoy = LocalDate.now();
+        LocalDate manana = hoy.plusDays(1);
+        System.out.println("La fecha de entrega estimada de tu compra es: " + manana);
     }
 
     public void despedida() {

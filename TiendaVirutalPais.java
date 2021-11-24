@@ -5,19 +5,15 @@ public interface TiendaVirutalPais {
 
     public void saludo();
 
-    public double cobrar(List<Producto> carritoDeCompra ,
-    String IDCliente );
+    public double cobrar(List<ProductoCheemsMart> carritoDeCompra);
 
     public double descuentoRandom();
 
-    public double aplicarDescuento(Producto producto);
+    public String mensajeDescuento(double descuento);
 
-    public String mensajeDescuento();
-    
     public void fechaEstimada();
 
     public void despedida();
-
 
 
 }

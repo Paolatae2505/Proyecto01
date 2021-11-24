@@ -1,4 +1,3 @@
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +53,8 @@ public class CheemsMart {
     }
 
     public void notificarCliente() {
-        String notificacion = interfazUsuario.mensajeDescuento();
+        double descuento = interfazUsuario.descuentoRandom();
+        String notificacion = interfazUsuario.mensajeDescuento(descuento);
         /*for (Map.Entry<ClienteTienda, List<Producto>> entry : clientesTienda.entrySet()) {
               Correo correo = entry.getKey().getCorreo();
               correo.recibirNotificacion(notificacion);
@@ -63,11 +63,12 @@ public class CheemsMart {
         clientesTienda.forEach((k, v) -> k.getCorreo().recibirNotificacion(notificacion));
     }
 
-    public double cobrar(List<Producto> carritoDeCompra, String IDCliente) {
+    public double cobrar(List<ProductoCheemsMart> carritoDeCompra) {
+        interfazUsuario.cobrar(carritoDeCompra);
         return 0;
     }
 
-    public HashMap<ClienteTienda, List<Producto>> getClientesTienda(){
+    public HashMap<ClienteTienda, List<Producto>> getClientesTienda() {
         return clientesTienda;
     }
 }

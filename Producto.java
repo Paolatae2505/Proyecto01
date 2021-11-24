@@ -5,5 +5,5 @@ public interface Producto {
     public String getNombre();
 
     public void mostrarInformacion();
-    
+
 }

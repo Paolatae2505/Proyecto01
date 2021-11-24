@@ -4,14 +4,14 @@ import java.util.List;
 public class Departamento implements Producto {
 
     private String nombre;
-    private List<Producto> productos = new ArrayList<>();
+    private List<ProductoCheemsMart> productos = new ArrayList<>();
 
 
     public Departamento(String nombre) {
         this.nombre = nombre;
     }
 
-    public Departamento(String nombre, List<Producto> productos) {
+    public Departamento(String nombre, List<ProductoCheemsMart> productos) {
         this.nombre = nombre;
         this.productos = productos;
     }
@@ -48,12 +48,16 @@ public class Departamento implements Producto {
         }
     }
 
-    public List<Producto> getListaDeProductos() {
+    public List<ProductoCheemsMart> getListaDeProductos() {
         return productos;
     }
 
-    public void agregarProducto(Producto producto) {
+    public void agregarProducto(ProductoCheemsMart producto) {
         productos.add(producto);
+    }
+
+    public void eliminarProducto(Producto producto) {
+        productos.remove(producto);
     }
 
 }

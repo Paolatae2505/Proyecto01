@@ -56,7 +56,6 @@ public class CatalogoTienda implements Catalogo, Producto {
 
     public String getNombre() {
         return "--------Catalogo Cheems Mart-------------";
-
     }
 
     public String getCodigo() {
