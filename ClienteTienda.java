@@ -62,4 +62,8 @@ public class ClienteTienda {
         return contraseña;
     }
 
+    public String getPais(){
+        return pais;
+    }
+
 }

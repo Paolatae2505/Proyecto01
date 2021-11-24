@@ -53,11 +53,11 @@ public class AlmacenCheemsMart implements Producto {
         departamentos.add(departamento);
     }
 
-    public Departamento getProductoDeDepartamento() {
+    public ProductoCheemsMart getProducto(int numeroProducto, String departamento) {
         return null;
     }
 
-    public void agregarProductoDeDepartamento(ProductoCheemsMart nuevoProducto, String departamento) {
+    public void agregarProducto(ProductoCheemsMart nuevoProducto, String departamento) {
         for (Departamento d : departamentos) {
             if (d.getNombre().equals(departamento)) {
                 d.agregarProducto(nuevoProducto);

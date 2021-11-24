@@ -35,8 +35,8 @@ public class ClienteTiendaProxy implements Cliente {
     public boolean getTransaccionExitosa(){
         return transaccionExitosa;
     }
-    public ClienteTienda getClienteReal(){
-        return clienteReal;
-    }
-    
+
+    public String getID(){
+        return clienteReal.getID();
+    } 
 }

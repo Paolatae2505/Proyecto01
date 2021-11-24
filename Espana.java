@@ -32,6 +32,12 @@ public class Espana implements TiendaVirutalPais {
         return "Tienes un " + descuento + "% de descuento en electrodométicos!";
     }
 
+    public void mensajeDeAgregarAlCarrito(){
+
+        System.out.println("Dijite el numero del producto que quereis Agregar al Carrito");
+
+    }
+
     public void fechaEstimada() {
         LocalDate hoy = LocalDate.now();
         LocalDate manana = hoy.plusDays(1);

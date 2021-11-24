@@ -11,6 +11,8 @@ public interface TiendaVirutalPais {
 
     public String mensajeDescuento(double descuento);
 
+    public void mensajeDeAgregarAlCarrito();
+
     public void fechaEstimada();
 
     public void despedida();

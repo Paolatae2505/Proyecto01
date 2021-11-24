@@ -39,6 +39,11 @@ public class CatalogoTiendaProxy implements Catalogo, Producto {
         catalogoTiendaReal.mostrarInformacion();
     }
 
+    public AlmacenCheemsMart getAlmacenCheemsMart(){
+        return catalogoTiendaReal.getAlmacenCheemsMart();
+    }
+
+
     public double getPrecio() {
         double precio = 0;
         if (checarAcceso()) {

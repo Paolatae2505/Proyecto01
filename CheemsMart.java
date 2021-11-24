@@ -2,12 +2,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class CheemsMart {
+public class CheemsMart implements Sujeto {
 
     private TiendaVirutalPais interfazUsuario;
     private List<ClienteTiendaProxy> clientesTiendaProxy = new ArrayList<>();
     private HashMap<ClienteTienda, List<Producto>> clientesTienda = new HashMap<>();
-
 
     public void seleccionarInterfazDeUsuario(String pais) {
 
@@ -46,7 +45,7 @@ public class CheemsMart {
         clientesTienda.remove(cliente);
         String IDCliente = cliente.getID();
         for (ClienteTiendaProxy proxy : clientesTiendaProxy) {
-            String ID = proxy.getClienteReal().getID();
+            String ID = proxy.getID();
             if (IDCliente.equals(ID) == true)
                 clientesTiendaProxy.remove(proxy);
         }
@@ -62,7 +61,6 @@ public class CheemsMart {
         */
         clientesTienda.forEach((k, v) -> k.getCorreo().recibirNotificacion(notificacion));
     }
-
     public double cobrar(List<ProductoCheemsMart> carritoDeCompra) {
         interfazUsuario.cobrar(carritoDeCompra);
         return 0;
@@ -70,5 +68,15 @@ public class CheemsMart {
 
     public HashMap<ClienteTienda, List<Producto>> getClientesTienda() {
         return clientesTienda;
+    }
+
+    public ClienteTiendaProxy getClienteProxy(String IDCliente){
+        ClienteTiendaProxy proxy = null;
+        for(ClienteTiendaProxy clienteTiendaProxy : clientesTiendaProxy){
+              if(clienteTiendaProxy.getID().equals(IDCliente))
+                  proxy =  clienteTiendaProxy;
+              
+        }
+        return proxy;
     }
 }

@@ -34,7 +34,11 @@ public class Mexico implements TiendaVirutalPais {
     public String mensajeDescuento(double descuento) {
         return "Tienes un " + descuento + "% de descuento en alimentos!";
     }
+    public void mensajeDeAgregarAlCarrito(){
 
+        System.out.println("Dijite el numero del producto a Agregar al Carrito");
+
+    }
     public void fechaEstimada() {
         LocalDate hoy = LocalDate.now();
         LocalDate manana = hoy.plusDays(1);

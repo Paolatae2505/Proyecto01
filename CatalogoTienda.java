@@ -47,6 +47,12 @@ public class CatalogoTienda implements Catalogo, Producto {
 
     public void mostrarInformacion() {
         almacenCheemsMart.mostrarInformacion();
+        System.out.println("8 Salir   ---------------------------------");
+        System.out.println("Digite el numero del departamento a visitar");
+    }
+
+    public AlmacenCheemsMart getAlmacenCheemsMart(){
+        return almacenCheemsMart;
     }
 
     public double getPrecio() {

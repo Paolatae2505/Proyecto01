@@ -36,6 +36,12 @@ public class USA implements TiendaVirutalPais {
         return "You've got a " + descuento + "% discount on electronics!";
     }
 
+    public void mensajeDeAgregarAlCarrito(){
+
+        System.out.println("Mensjae en iNGLES jaja");
+
+    }
+
     public void fechaEstimada() {
         LocalDate today = LocalDate.now();
         LocalDate tomorrow = today.plusDays(1);
