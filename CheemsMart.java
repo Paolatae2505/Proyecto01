@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class CheemsMart implements Serializable {
+public class CheemsMart {
 
     private TiendaVirutalPais interfazUsuario;
     private List<ClienteTiendaProxy> clientesTiendaProxy = new ArrayList<>();
@@ -60,7 +60,7 @@ public class CheemsMart implements Serializable {
               correo.recibirNotificacion(notificacion);
           }
         */
-        clientesTienda.forEach((k, v) -> Correo correo = k.getCorreo().recibirNotificacion(notificacion));
+        clientesTienda.forEach((k, v) -> k.getCorreo().recibirNotificacion(notificacion));
     }
 
     public double cobrar(List<Producto> carritoDeCompra, String IDCliente) {

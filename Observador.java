@@ -1,4 +1,4 @@
 public interface Observador {
 
-    public void recibirNotificacion();
+    public void recibirNotificacion(String notificacion);
 }
