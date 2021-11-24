@@ -66,4 +66,8 @@ public class CheemsMart {
     public double cobrar(List<Producto> carritoDeCompra, String IDCliente) {
         return 0;
     }
+
+    public HashMap<ClienteTienda, List<Producto>> getClientesTienda(){
+        return clientesTienda;
+    }
 }

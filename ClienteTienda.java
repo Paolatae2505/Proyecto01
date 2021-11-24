@@ -54,5 +54,13 @@ public class ClienteTienda {
         return ID;
     }
 
+    public String getUsuario(){
+        return  nombreUsuario;
+    }
+
+    public String getContraseña(){
+        return contraseña;
+    }
+
 
 }
