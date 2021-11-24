@@ -7,11 +7,10 @@ public class SimulacionCheemsMart {
         AlmacenCheemsMart almacenCheemsMart = new AlmacenCheemsMart();
         CatalogoTienda catalogoReal = new CatalogoTienda(almacenCheemsMart);
         CatalogoTiendaProxy catalogo = new CatalogoTiendaProxy(catalogoReal);
-        FacadeSimulacionCheemsMart facadeSimulacionCheemsMart  = new FacadeSimulacionCheemsMart(catalogo
-        ,cheemsMart);
+        FacadeSimulacion facadeSimulacion = new FacadeSimulacion(catalogo,cheemsMart);
 
-        facadeSimulacionCheemsMart.inscibirUsuariosDefault();
-        facadeSimulacionCheemsMart.iniciarSesion();
+        facadeSimulacion.inscibirUsuariosDefault();
+        facadeSimulacion.iniciarSesion();
         
 
         

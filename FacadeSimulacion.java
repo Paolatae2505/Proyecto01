@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class FacadeSimulacionCheemsMart {
+public class FacadeSimulacion{
 
     private CatalogoTiendaProxy catalogo;
     private CheemsMart cheemsMart;
@@ -14,7 +14,7 @@ public class FacadeSimulacionCheemsMart {
     private Compra compra = new Compra();
    
 
-    public FacadeSimulacionCheemsMart(CatalogoTiendaProxy catalogo, CheemsMart cheemsMart){
+    public FacadeSimulacion(CatalogoTiendaProxy catalogo, CheemsMart cheemsMart){
            this.catalogo = catalogo;
              almacenCheemsMart = catalogo.getAlmacenCheemsMart();
            this.cheemsMart = cheemsMart;
