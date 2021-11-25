@@ -15,6 +15,6 @@ public interface Catalogo {
 
     public void mostrarDepartamentoElectronica();
 
-    public AlmacenCheemsMart getAlmacenCheemsMart();
+    
     
 }

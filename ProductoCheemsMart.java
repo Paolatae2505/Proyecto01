@@ -28,7 +28,6 @@ public class ProductoCheemsMart implements Producto {
         System.out.println("Departamento :" + departamento);
         System.out.println("Codigo De Barras :" + codigoDeBarras);
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

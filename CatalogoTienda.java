@@ -45,10 +45,24 @@ public class CatalogoTienda implements Catalogo, Producto {
         departamentoElectronica.mostrarInformacion();
     }
 
-    public void mostrarInformacion() {
+    public void mostrarInformacion() {  //// Este se borrara
         almacenCheemsMart.mostrarInformacion();
         System.out.println("8 Salir   ---------------------------------");
         System.out.println("Digite el numero del departamento a visitar");
+    }
+    public void menuDelCatalogo(){
+        System.out.println("---------------------------------------------");
+        System.out.println("---------- Catalogo CheemsMart --------------");
+        System.out.println("---------------------------------------------");
+        System.out.println("-1 Departamento : Belleza -------------------");
+        System.out.println("-2 Departamento : Electronica ---------------");
+        System.out.println("-3 Departamento : Electrodomesticos ---------");
+        System.out.println("-4 Departamento : Bebidas -------------------");
+        System.out.println("-5 Departamento : Alimentos Frescos ---------");
+        System.out.println("-6 Departamento : Empquetados ---------------");
+        System.out.println("-7 Departamento : Dulces      ---------------");
+        System.out.println("-8 Salir      -------------------------------");
+        System.out.println("---------------------------------------------");
     }
 
     public AlmacenCheemsMart getAlmacenCheemsMart(){
@@ -56,12 +70,11 @@ public class CatalogoTienda implements Catalogo, Producto {
     }
 
     public double getPrecio() {
-        almacenCheemsMart.getPrecio(); /// Muestra los cinco departamentos :)
-        return 0;
+        return  almacenCheemsMart.getPrecio();
     }
 
     public String getNombre() {
-        return "--------Catalogo Cheems Mart-------------";
+        return "------------- Catalogo Cheems Mart ---------------";
     }
 
     public String getCodigo() {

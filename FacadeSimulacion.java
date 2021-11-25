@@ -14,9 +14,10 @@ public class FacadeSimulacion{
     private Compra compra = new Compra();
    
 
-    public FacadeSimulacion(CatalogoTiendaProxy catalogo, CheemsMart cheemsMart){
+    public FacadeSimulacion(CatalogoTiendaProxy catalogo, CheemsMart cheemsMart,
+    AlmacenCheemsMart almacenCheemsMart){
            this.catalogo = catalogo;
-             almacenCheemsMart = catalogo.getAlmacenCheemsMart();
+            this.almacenCheemsMart = almacenCheemsMart;
            this.cheemsMart = cheemsMart;
     }
 
@@ -81,7 +82,7 @@ public class FacadeSimulacion{
         Scanner entrada = new Scanner(System.in);
         boolean salir = false;
         while(salir == false){
-        catalogo.mostrarInformacion();
+        catalogo.menuDelCatalogo();
         int opcion = entrada.nextInt();
         switch(opcion){
 
@@ -132,20 +133,22 @@ public class FacadeSimulacion{
 
     public void agregraAlcarrito(){
         Scanner entrada = new Scanner(System.in);
-        Scanner entradaIn = new Scanner(System.in);
         boolean salir = false;
         int producto = 0;
         ProductoCheemsMart productoCheemsMart = null;
         while(salir == false){
-        catalogo.mostrarInformacion();
-
+        catalogo.menuDelCatalogo();
+        while (!entrada.hasNextInt()) {
+            System.out.println("<Da una opción válida !!!>");
+            entrada.nextLine();
+        }
         int opcion = entrada.nextInt();
         switch(opcion){
 
             case 1 :
             catalogo.mostrarDepartamentoDeBelleza();
             interfaz.mensajeDeAgregarAlCarrito();
-            producto = entradaIn.nextInt();
+            producto = entrada.nextInt();
             productoCheemsMart = almacenCheemsMart.getProducto(producto,"Belleza");
             compra.agregarProducto(productoCheemsMart);
             break;
@@ -153,7 +156,7 @@ public class FacadeSimulacion{
             case 2 :
             catalogo.mostrarDepartamentoElectronica();
             interfaz.mensajeDeAgregarAlCarrito();
-            producto = entradaIn.nextInt();
+            producto = entrada.nextInt();
             productoCheemsMart = almacenCheemsMart.getProducto(producto,"Electronica");
             compra.agregarProducto(productoCheemsMart);
             break;
@@ -161,7 +164,7 @@ public class FacadeSimulacion{
             case 3 :
             catalogo.mostrarDepartamentoElectrodomesticos();
             interfaz.mensajeDeAgregarAlCarrito();
-            producto = entradaIn.nextInt();
+            producto = entrada.nextInt();
             productoCheemsMart = almacenCheemsMart.getProducto(producto,"Electrodomesticos");
             compra.agregarProducto(productoCheemsMart);
             break;
@@ -169,7 +172,7 @@ public class FacadeSimulacion{
             case 4 :
             catalogo.mostrarDepartamentoDeBebidas();
             interfaz.mensajeDeAgregarAlCarrito();
-            producto = entradaIn.nextInt();
+            producto = entrada.nextInt();
             productoCheemsMart = almacenCheemsMart.getProducto(producto,"Bebidas");
             compra.agregarProducto(productoCheemsMart);
             break;
@@ -177,7 +180,7 @@ public class FacadeSimulacion{
             case 5 :
             catalogo.mostrarDepartamentoDeAlimentosFrescos();
             interfaz.mensajeDeAgregarAlCarrito();
-            producto = entradaIn.nextInt();
+            producto = entrada.nextInt();
             productoCheemsMart = almacenCheemsMart.getProducto(producto,"Alimentos Frescos");
             compra.agregarProducto(productoCheemsMart);
             break;
@@ -185,7 +188,7 @@ public class FacadeSimulacion{
             case 6 :
             catalogo.mostrarDepartamentoEmpaquetados();
             interfaz.mensajeDeAgregarAlCarrito();
-            producto = entradaIn.nextInt();
+            producto = entrada.nextInt();
             productoCheemsMart = almacenCheemsMart.getProducto(producto,"Empaquetados");
             compra.agregarProducto(productoCheemsMart);
             break;
@@ -193,7 +196,7 @@ public class FacadeSimulacion{
             case 7 :
             catalogo.mostrarDepartamentoDeDulces();
             interfaz.mensajeDeAgregarAlCarrito();
-            producto = entradaIn.nextInt();
+            producto = entrada.nextInt();
             productoCheemsMart = almacenCheemsMart.getProducto(producto,"Dulces");
             compra.agregarProducto(productoCheemsMart);
             break;
@@ -211,5 +214,9 @@ public class FacadeSimulacion{
 
     public void pagarCarritoDeCompra(){
 
+    }
+
+    public TiendaVirutalPais getInterfaz(){
+        return  interfaz;
     }
 }
