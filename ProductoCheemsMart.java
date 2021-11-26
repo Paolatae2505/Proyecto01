@@ -7,7 +7,7 @@ public class ProductoCheemsMart implements Producto {
     private String codigoDeBarras;
 
     public ProductoCheemsMart(String nombre, double precio,
-                              String departamento, String codigoDeBarras) {
+                              String departamento,String CodigoDeBarras) {
         this.nombre = nombre;
         this.precio = precio;
         this.departamento = departamento;
@@ -44,7 +44,7 @@ public class ProductoCheemsMart implements Producto {
         this.departamento = departamento;
     }
 
-    public String getCodigoDeBarras() {
+    public String getCodigo() {
         return codigoDeBarras;
     }
 

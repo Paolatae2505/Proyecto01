@@ -4,14 +4,15 @@ import java.util.List;
 public class Departamento implements Producto {
 
     private String nombre;
-    private List<ProductoCheemsMart> productos = new ArrayList<>();
+    private List<Producto> productos = new ArrayList<>();
+    private String codigo;
 
 
     public Departamento(String nombre) {
         this.nombre = nombre;
     }
 
-    public Departamento(String nombre, List<ProductoCheemsMart> productos) {
+    public Departamento(String nombre, List<Producto> productos) {
         this.nombre = nombre;
         this.productos = productos;
     }
@@ -38,6 +39,11 @@ public class Departamento implements Producto {
         return productoFInal;
 
     }
+    public String getCodigo(){
+       codigo = nombre.charAt(0) 
+       +"-"+ nombre.charAt(1) +"-" + nombre.charAt(2);
+       return codigo;
+    }
 
     public void mostrarInformacion() {
         int i = 1;
@@ -48,7 +54,7 @@ public class Departamento implements Producto {
         }
     }
 
-    public List<ProductoCheemsMart> getListaDeProductos() {
+    public List<Producto> getListaDeProductos() {
         return productos;
     }
 

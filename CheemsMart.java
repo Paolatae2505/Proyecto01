@@ -1,39 +1,14 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 
 public class CheemsMart implements Sujeto {
 
     private TiendaVirutalPais interfazUsuario;
     private List<ClienteTiendaProxy> clientesTiendaProxy = new ArrayList<>();
-    private HashMap<ClienteTienda, List<Producto>> clientesTienda = new HashMap<>();
-
-    public void seleccionarInterfazDeUsuario(String pais) {
-
-        switch (pais) {
-            case "Mexico":
-
-                interfazUsuario = Mexico.getTiendaVirtual();
-
-                break;
-
-            case "USA":
-
-                interfazUsuario = USA.getTiendaVirtual();
-                break;
-
-            case "España":
-
-                interfazUsuario = Espana.getTiendaVirtual();
-
-                break;
-        }
-    }
-
-    public TiendaVirutalPais getInterfaz() {
-        return interfazUsuario;
-    }
-
+    private HashMap<ClienteTienda, List<ProductoCheemsMart>> clientesTienda = new HashMap<>();
+    
     public void agregarCliente(ClienteTienda cliente) {
         clientesTienda.put(cliente, null);
         ClienteTiendaProxy clienteTiendaProxy = new ClienteTiendaProxy(cliente);
@@ -50,6 +25,10 @@ public class CheemsMart implements Sujeto {
                 clientesTiendaProxy.remove(proxy);
         }
     }
+    public void setInterfaz(TiendaVirutalPais interfazUsuario){
+        this.interfazUsuario = interfazUsuario;
+
+    }
 
     public void notificarCliente() {
         double descuento = interfazUsuario.descuentoRandom();
@@ -61,13 +40,42 @@ public class CheemsMart implements Sujeto {
         */
         clientesTienda.forEach((k, v) -> k.getCorreo().recibirNotificacion(notificacion));
     }
-    public double cobrar(List<ProductoCheemsMart> carritoDeCompra) {
-        interfazUsuario.cobrar(carritoDeCompra);
-        return 0;
+    private boolean containsClienteID(String ID){
+        boolean containsClienteID = false;
+        for (Map.Entry<ClienteTienda, List<ProductoCheemsMart>> entry 
+        : clientesTienda.entrySet()) {
+            ClienteTienda clienteTienda =   entry.getKey();
+            if(clienteTienda.getID().equals(ID)){
+                 containsClienteID = true;
+            }
+        }
+        return containsClienteID;
+    }
+    public void productosDelCliente(List<ProductoCheemsMart> carritoDeCompra,String ID) {
+      
+        if(containsClienteID(ID)){
+           ClienteTienda clienteTienda =getClienteTienda(ID);
+           clientesTienda.put(clienteTienda,carritoDeCompra);
+        }else{
+            System.out.println("No existe el cliente ...");
+        }  
     }
 
-    public HashMap<ClienteTienda, List<Producto>> getClientesTienda() {
+    public HashMap<ClienteTienda, List<ProductoCheemsMart>> getClientesTienda() {
         return clientesTienda;
+    }
+
+    public ClienteTienda getClienteTienda(String ID){
+        ClienteTienda clienteTienda = null;
+        for (Map.Entry<ClienteTienda, List<ProductoCheemsMart>> entry 
+        : clientesTienda.entrySet()) {
+            ClienteTienda cliente =   entry.getKey();
+            if(cliente.getID().equals(ID)){
+                 clienteTienda = cliente;
+            }
+        }
+        return clienteTienda;
+
     }
 
     public ClienteTiendaProxy getClienteProxy(String IDCliente){

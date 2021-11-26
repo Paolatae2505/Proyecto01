@@ -1,4 +1,4 @@
-public class CatalogoTiendaProxy implements Catalogo, Producto {
+public class CatalogoTiendaProxy implements Catalogo{
 
     private CatalogoTienda catalogoTiendaReal;
     private String codigo;
@@ -7,6 +7,12 @@ public class CatalogoTiendaProxy implements Catalogo, Producto {
         this.catalogoTiendaReal = catalogoTiendaReal;
     }
 
+    public void mostrarDepartamento(String codigoDepto){
+        //// revision del if ?
+        catalogoTiendaReal.mostrarDepartamento(codigoDepto);
+
+    }
+    /** 
     public void mostrarDepartamentoDeBebidas() {
         catalogoTiendaReal.mostrarDepartamentoDeBebidas();
     }
@@ -34,11 +40,7 @@ public class CatalogoTiendaProxy implements Catalogo, Producto {
     public void mostrarDepartamentoElectronica() {
         catalogoTiendaReal.mostrarDepartamentoElectronica();
     }
-
-    public void mostrarInformacion() {
-        catalogoTiendaReal.mostrarInformacion();
-    }
-
+    */
     public void menuDelCatalogo(){
          catalogoTiendaReal.menuDelCatalogo();
     }
@@ -46,28 +48,10 @@ public class CatalogoTiendaProxy implements Catalogo, Producto {
     public AlmacenCheemsMart getAlmacenCheemsMart(){
         return catalogoTiendaReal.getAlmacenCheemsMart();
     }
-
-
-    public double getPrecio() {
-        double precio = 0;
-        if (checarAcceso()) {
-            precio = catalogoTiendaReal.getPrecio();
-        }
-        return precio;
-    }
-
-    public String getNombre() {
-        String nombre = "";
-        if (checarAcceso()) {
-            nombre = catalogoTiendaReal.getNombre();
-        }
-        return nombre;
-    }
-
     public String getCodigo() {
         String codigo = "";
         if (checarAcceso()) {
-            codigo = catalogoTiendaReal.getNombre();
+            codigo = catalogoTiendaReal.getCodigo();
         }
         return codigo;
     }

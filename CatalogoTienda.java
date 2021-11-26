@@ -1,4 +1,4 @@
-public class CatalogoTienda implements Catalogo, Producto {
+public class CatalogoTienda implements Catalogo{
 
     private AlmacenCheemsMart almacenCheemsMart;
     private String codigo;
@@ -10,46 +10,50 @@ public class CatalogoTienda implements Catalogo, Producto {
         codigo = "2505-3095";
     }
 
+    public void mostrarDepartamento(String codigoDepto){
+        //// revision del if ?
+        Producto departamento = almacenCheemsMart.getDepartamento(codigoDepto);
+        departamento.mostrarInformacion();
+
+    }
+   /**
     public void mostrarDepartamentoDeBebidas() {
-        Departamento departamentoBebidas = almacenCheemsMart.getDepartamento("Bebidas");
+        Producto departamentoBebidas = almacenCheemsMart.getDepartamento("Bebidas");
         departamentoBebidas.mostrarInformacion();
     }
 
     public void mostrarDepartamentoDeBelleza() {
-        Departamento departamentoBelleza = almacenCheemsMart.getDepartamento("Belleza");
+        Producto departamentoBelleza = almacenCheemsMart.getDepartamento("Belleza");
         departamentoBelleza.mostrarInformacion();
     }
 
     public void mostrarDepartamentoDeDulces() {
-        Departamento departamentoDulces = almacenCheemsMart.getDepartamento("Dulces");
+        Producto departamentoDulces = almacenCheemsMart.getDepartamento("Dulces");
         departamentoDulces.mostrarInformacion();
     }
 
     public void mostrarDepartamentoDeAlimentosFrescos() {
-        Departamento departamentAlimentosFrescos = almacenCheemsMart.getDepartamento("Alimentos Frescos");
+        Producto departamentAlimentosFrescos = almacenCheemsMart.getDepartamento("Alimentos Frescos");
         departamentAlimentosFrescos.mostrarInformacion();
     }
 
     public void mostrarDepartamentoElectrodomesticos() {
-        Departamento departamentoElectrodomesticos = almacenCheemsMart.getDepartamento("Electrodomesticos");
+        Producto departamentoElectrodomesticos = almacenCheemsMart.getDepartamento("Electrodomesticos");
         departamentoElectrodomesticos.mostrarInformacion();
     }
 
     public void mostrarDepartamentoEmpaquetados() {
-        Departamento departamentoEmpaquetados = almacenCheemsMart.getDepartamento("Empaquetados");
+        Producto departamentoEmpaquetados = almacenCheemsMart.getDepartamento("Empaquetados");
         departamentoEmpaquetados.mostrarInformacion();
     }
 
     public void mostrarDepartamentoElectronica() {
-        Departamento departamentoElectronica = almacenCheemsMart.getDepartamento("Electronica");
+       Producto  departamentoElectronica = almacenCheemsMart.getDepartamento("Electronica");
         departamentoElectronica.mostrarInformacion();
     }
 
-    public void mostrarInformacion() {  //// Este se borrara
-        almacenCheemsMart.mostrarInformacion();
-        System.out.println("8 Salir   ---------------------------------");
-        System.out.println("Digite el numero del departamento a visitar");
-    }
+     */
+
     public void menuDelCatalogo(){
         System.out.println("---------------------------------------------");
         System.out.println("---------- Catalogo CheemsMart --------------");
@@ -67,14 +71,6 @@ public class CatalogoTienda implements Catalogo, Producto {
 
     public AlmacenCheemsMart getAlmacenCheemsMart(){
         return almacenCheemsMart;
-    }
-
-    public double getPrecio() {
-        return  almacenCheemsMart.getPrecio();
-    }
-
-    public String getNombre() {
-        return "------------- Catalogo Cheems Mart ---------------";
     }
 
     public String getCodigo() {

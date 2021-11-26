@@ -8,7 +8,7 @@ public class FacadeSimulacion{
 
     private CatalogoTiendaProxy catalogo;
     private CheemsMart cheemsMart;
-    private TiendaVirutalPais interfaz;
+    private TiendaVirutalPais interfazUsuario;
     private ClienteTiendaProxy cliente;
     private AlmacenCheemsMart almacenCheemsMart;
     private Compra compra = new Compra();
@@ -32,19 +32,38 @@ public class FacadeSimulacion{
           cheemsMart.agregarCliente(cliente2);
     }
 
+    private void seleccionarInterfazDeUsuario(String pais) {
+
+        switch (pais) {
+            case "Mexico":
+
+                interfazUsuario = Mexico.getTiendaVirtual();
+
+                break;
+
+            case "USA":
+
+                interfazUsuario = USA.getTiendaVirtual();
+                break;
+
+            case "España":
+
+                interfazUsuario = Espana.getTiendaVirtual();
+
+                break;
+        }
+    }
+
     public void iniciarSesion(){
         Scanner entrada = new Scanner(System.in);
-        HashMap<ClienteTienda, List<Producto>> clientesTienda  = cheemsMart.getClientesTienda();
+        HashMap<ClienteTienda, List<ProductoCheemsMart>> clientesTienda  = 
+        cheemsMart.getClientesTienda();
         boolean usuarioCorrecto = false;
         boolean contraseñaCorrecta = false;
         ClienteTienda clienteAuxiliar = null;
         String IDCliente = "";
         String pais = "";
         while(usuarioCorrecto == false || contraseñaCorrecta == false){
-        System.out.println("-------------------------------------------------------");
-        System.out.println("-------------------------------------------------------");
-        System.out.println("----------BIENVENIDO A LA TIENDA CHEEMSMART------------");
-        System.out.println("-------------------------------------------------------");
         System.out.println("-------------------------------------------------------");
         System.out.println("----Usuario :                --------------------------");
         System.out.println("-------------------------------------------------------");
@@ -54,7 +73,8 @@ public class FacadeSimulacion{
         System.out.println("-------------------------------------------------------");
         String usuarioReal = "";
         String contraseñaReal  = "";
-        for (Map.Entry<ClienteTienda, List<Producto> > entry : clientesTienda.entrySet()) {
+        for (Map.Entry<ClienteTienda, List<ProductoCheemsMart> > entry : 
+        clientesTienda.entrySet()) {
              clienteAuxiliar =  entry.getKey();
              usuarioReal =   clienteAuxiliar.getUsuario();
              contraseñaReal = clienteAuxiliar.getContraseña();
@@ -73,9 +93,8 @@ public class FacadeSimulacion{
         }
      }
       this.cliente = cheemsMart.getClienteProxy(IDCliente);
-      cheemsMart.seleccionarInterfazDeUsuario(pais);
-      interfaz = cheemsMart.getInterfaz();
-      
+      seleccionarInterfazDeUsuario(pais); 
+      cheemsMart.setInterfaz(interfazUsuario);
     }
 
     public void verCatalogo(){
@@ -87,35 +106,37 @@ public class FacadeSimulacion{
         switch(opcion){
 
             case 1 :
-            catalogo.mostrarDepartamentoDeBelleza();
+            catalogo.mostrarDepartamento("Bel");
             break;
 
             case 2 :
-            catalogo.mostrarDepartamentoElectronica();
+            catalogo.mostrarDepartamento("Ele");
              break;
 
             case 3 :
-            catalogo.mostrarDepartamentoElectrodomesticos();
+            ///Electrodomesticos
+            catalogo.mostrarDepartamento("Dom");
             
             break;
 
             case 4 :
-            catalogo.mostrarDepartamentoDeBebidas();
+            catalogo.mostrarDepartamento("Beb");
          
             break;
 
             case 5 :
-            catalogo.mostrarDepartamentoDeAlimentosFrescos();
+            ///Alimentos Frescos
+            catalogo.mostrarDepartamento("Fre");
          
             break;
 
             case 6 :
-            catalogo.mostrarDepartamentoEmpaquetados();
+            catalogo.mostrarDepartamento("Emp");
         
             break;
 
             case 7 :
-            catalogo.mostrarDepartamentoDeDulces();
+            catalogo.mostrarDepartamento("Dul");
           
             break;
 
@@ -146,56 +167,56 @@ public class FacadeSimulacion{
         switch(opcion){
 
             case 1 :
-            catalogo.mostrarDepartamentoDeBelleza();
-            interfaz.mensajeDeAgregarAlCarrito();
+            catalogo.mostrarDepartamento("Bel");
+            interfazUsuario.mensajeDeAgregarAlCarrito();
             producto = entrada.nextInt();
             productoCheemsMart = almacenCheemsMart.getProducto(producto,"Belleza");
             compra.agregarProducto(productoCheemsMart);
             break;
 
             case 2 :
-            catalogo.mostrarDepartamentoElectronica();
-            interfaz.mensajeDeAgregarAlCarrito();
+            catalogo.mostrarDepartamento("Ele");
+            interfazUsuario.mensajeDeAgregarAlCarrito();
             producto = entrada.nextInt();
             productoCheemsMart = almacenCheemsMart.getProducto(producto,"Electronica");
             compra.agregarProducto(productoCheemsMart);
             break;
 
             case 3 :
-            catalogo.mostrarDepartamentoElectrodomesticos();
-            interfaz.mensajeDeAgregarAlCarrito();
+            catalogo.mostrarDepartamento("Dom");
+            interfazUsuario.mensajeDeAgregarAlCarrito();
             producto = entrada.nextInt();
             productoCheemsMart = almacenCheemsMart.getProducto(producto,"Electrodomesticos");
             compra.agregarProducto(productoCheemsMart);
             break;
 
             case 4 :
-            catalogo.mostrarDepartamentoDeBebidas();
-            interfaz.mensajeDeAgregarAlCarrito();
+            catalogo.mostrarDepartamento("Beb");
+            interfazUsuario.mensajeDeAgregarAlCarrito();
             producto = entrada.nextInt();
             productoCheemsMart = almacenCheemsMart.getProducto(producto,"Bebidas");
             compra.agregarProducto(productoCheemsMart);
             break;
 
             case 5 :
-            catalogo.mostrarDepartamentoDeAlimentosFrescos();
-            interfaz.mensajeDeAgregarAlCarrito();
+            catalogo.mostrarDepartamento("Fre");
+            interfazUsuario.mensajeDeAgregarAlCarrito();
             producto = entrada.nextInt();
             productoCheemsMart = almacenCheemsMart.getProducto(producto,"Alimentos Frescos");
             compra.agregarProducto(productoCheemsMart);
             break;
 
             case 6 :
-            catalogo.mostrarDepartamentoEmpaquetados();
-            interfaz.mensajeDeAgregarAlCarrito();
+            catalogo.mostrarDepartamento("Emp");
+            interfazUsuario.mensajeDeAgregarAlCarrito();
             producto = entrada.nextInt();
             productoCheemsMart = almacenCheemsMart.getProducto(producto,"Empaquetados");
             compra.agregarProducto(productoCheemsMart);
             break;
 
             case 7 :
-            catalogo.mostrarDepartamentoDeDulces();
-            interfaz.mensajeDeAgregarAlCarrito();
+            catalogo.mostrarDepartamento("Dul");
+            interfazUsuario.mensajeDeAgregarAlCarrito();
             producto = entrada.nextInt();
             productoCheemsMart = almacenCheemsMart.getProducto(producto,"Dulces");
             compra.agregarProducto(productoCheemsMart);
@@ -217,6 +238,6 @@ public class FacadeSimulacion{
     }
 
     public TiendaVirutalPais getInterfaz(){
-        return  interfaz;
+        return  interfazUsuario;
     }
 }

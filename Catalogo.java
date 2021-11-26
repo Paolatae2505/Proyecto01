@@ -1,20 +1,9 @@
 public interface Catalogo {
 
 
-    public void mostrarDepartamentoDeBebidas();
+    public void mostrarDepartamento(String codigoDepto);
 
-    public void mostrarDepartamentoDeBelleza();
+    public AlmacenCheemsMart getAlmacenCheemsMart();
 
-    public void mostrarDepartamentoDeDulces();
-
-    public void mostrarDepartamentoDeAlimentosFrescos();
-    
-    public void mostrarDepartamentoElectrodomesticos();
-
-    public void mostrarDepartamentoEmpaquetados();
-
-    public void mostrarDepartamentoElectronica();
-
-    
     
 }

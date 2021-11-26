@@ -6,4 +6,6 @@ public interface Producto {
 
     public void mostrarInformacion();
 
+    public String getCodigo();
+
 }
