@@ -8,8 +8,8 @@ public class CuentaBancaria {
         this.dinero = dinero;
     }
 
-    public void transaccion(double dinero) {
-        
+    public void transaccion(double costo) {
+        dinero = dinero - costo;
     }
 
     public void visualizarEstadoActual() {

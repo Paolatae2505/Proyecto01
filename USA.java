@@ -3,11 +3,23 @@ import java.util.List;
 
 public class USA implements TiendaVirutalPais {
     private double descuento = 0;
-    private volatile static TiendaVirutalPais tiendaVirtualUSA;
+    private volatile static USA tiendaVirtualUSA;
     private Cliente cliente;
+    private String idioma = "ingles";
 
     private USA(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public static USA obtenerTiendaVirtualEspana(Cliente cliente) {
+        if (tiendaVirtualUSA == null) {
+            synchronized (TiendaVirutalPais.class) {
+                if (tiendaVirtualUSA == null) {
+                    tiendaVirtualUSA = new USA(cliente);
+                }
+            }
+        }
+        return tiendaVirtualUSA;
     }
 
     public void saludo() {
@@ -36,9 +48,8 @@ public class USA implements TiendaVirutalPais {
         return "You've got a " + descuento + "% discount on electronics!";
     }
 
-    public void mensajeDeAgregarAlCarrito(){
-
-        System.out.println("Mensjae en iNGLES jaja");
+    public void mensajeDeAgregarAlCarrito() {
+        System.out.println("Add to shopping cart");
 
     }
 
@@ -53,6 +64,17 @@ public class USA implements TiendaVirutalPais {
                 "Come back soon!");
     }
 
+    public void mostrarMenuPrincipal() {
+        System.out.println("---------------------------------------------");
+        System.out.println("---------- ¡Welcome to CheemsMart! ----------");
+        System.out.println("---------------------------------------------");
+        System.out.println("-------------- Elige una opción -------------");
+        System.out.println("-1 --- Ver Catálogo -------------------------");
+        System.out.println("-2 --- Realizar Compra ----------------------");
+        //System.out.println("-3 --- Realizar Pago ------------------------");
+        System.out.println("-3 --- Salir --------------------------------");
+        System.out.println("---------------------------------------------");
+    }
 
     public double getDescuento() {
         return descuento;
@@ -66,7 +88,7 @@ public class USA implements TiendaVirutalPais {
         return tiendaVirtualUSA;
     }
 
-    public static void setTiendaVirtualEspana(TiendaVirutalPais tiendaVirtualUSA) {
+    public static void setTiendaVirtualUSA(USA tiendaVirtualUSA) {
         USA.tiendaVirtualUSA = tiendaVirtualUSA;
     }
 
@@ -76,5 +98,13 @@ public class USA implements TiendaVirutalPais {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
     }
 }

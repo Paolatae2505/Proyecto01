@@ -1,3 +1,5 @@
+import java.util.List;
+
 public interface Producto {
 
     public double getPrecio();
@@ -8,4 +10,5 @@ public interface Producto {
 
     public String getCodigo();
 
+    public List<Producto> getListaProductos();
 }

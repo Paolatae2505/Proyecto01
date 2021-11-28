@@ -1,17 +1,27 @@
+import java.util.List;
+import java.util.Random;
+
 public class ProductoCheemsMart implements Producto {
-
-
+    
     private String nombre;
     private double precio;
     private String departamento;
     private String codigoDeBarras;
 
     public ProductoCheemsMart(String nombre, double precio,
-                              String departamento,String CodigoDeBarras) {
+                              String departamento) {
         this.nombre = nombre;
         this.precio = precio;
         this.departamento = departamento;
-        this.codigoDeBarras = codigoDeBarras;
+        generadorCodigoDeBarras();
+    }
+
+    public void generadorCodigoDeBarras() {
+        Random rand = new Random(1000);
+        this.codigoDeBarras = departamento.charAt(0)
+                + "-" + departamento.charAt(1) + "-" + departamento.charAt(2)
+                + nombre.charAt(0) + "-" + nombre.charAt(1) + "-" + nombre.charAt(2)
+                + rand.nextInt();
     }
 
     public double getPrecio() {
@@ -28,6 +38,7 @@ public class ProductoCheemsMart implements Producto {
         System.out.println("Departamento :" + departamento);
         System.out.println("Codigo De Barras :" + codigoDeBarras);
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -45,10 +56,15 @@ public class ProductoCheemsMart implements Producto {
     }
 
     public String getCodigo() {
-        return codigoDeBarras;
+        return this.codigoDeBarras;
+    }
+
+    public List<Producto> getListaProductos() {
+        return null;
     }
 
     public void setCodigoDeBarras(String codigoDeBarras) {
         this.codigoDeBarras = codigoDeBarras;
     }
+
 }

@@ -3,11 +3,23 @@ import java.util.List;
 
 public class Mexico implements TiendaVirutalPais {
     private double descuento = 0;
-    private volatile static TiendaVirutalPais tiendaVirtualMexico;
+    private volatile static Mexico tiendaVirtualMexico;
     private Cliente cliente;
+    private String idioma = "espanol";
 
     private Mexico(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public static Mexico obtenerTiendaVirtualEspana(Cliente cliente) {
+        if (tiendaVirtualMexico == null) {
+            synchronized (TiendaVirutalPais.class) {
+                if (tiendaVirtualMexico == null) {
+                    tiendaVirtualMexico = new Mexico(cliente);
+                }
+            }
+        }
+        return tiendaVirtualMexico;
     }
 
     public void saludo() {
@@ -34,11 +46,13 @@ public class Mexico implements TiendaVirutalPais {
     public String mensajeDescuento(double descuento) {
         return "Tienes un " + descuento + "% de descuento en alimentos!";
     }
-    public void mensajeDeAgregarAlCarrito(){
+
+    public void mensajeDeAgregarAlCarrito() {
 
         System.out.println("Dijite el numero del producto a Agregar al Carrito");
 
     }
+
     public void fechaEstimada() {
         LocalDate hoy = LocalDate.now();
         LocalDate manana = hoy.plusDays(1);
@@ -46,10 +60,21 @@ public class Mexico implements TiendaVirutalPais {
     }
 
     public void despedida() {
-        System.out.println("Cheems Mart Mexico agradece su compra!" +
+        System.out.println("Cheems Mart México agradece su compra!" +
                 "\nVuelva pronto!");
     }
 
+    public void mostrarMenuPrincipal() {
+        System.out.println("---------------------------------------------");
+        System.out.println("--------- ¡Bienvenido a CheemsMart! ---------");
+        System.out.println("---------------------------------------------");
+        System.out.println("-------------- Elige una opción -------------");
+        System.out.println("-1 --- Ver Catálogo -------------------------");
+        System.out.println("-2 --- Realizar Compra ----------------------");
+        //System.out.println("-3 --- Realizar Pago ------------------------");
+        System.out.println("-3 --- Salir --------------------------------");
+        System.out.println("---------------------------------------------");
+    }
 
     public double getDescuento() {
         return descuento;
@@ -63,7 +88,7 @@ public class Mexico implements TiendaVirutalPais {
         return tiendaVirtualMexico;
     }
 
-    public static void setTiendaVirtualEspana(TiendaVirutalPais tiendaVirtualMexico) {
+    public static void setTiendaVirtualMexico(Mexico tiendaVirtualMexico) {
         Mexico.tiendaVirtualMexico = tiendaVirtualMexico;
     }
 
@@ -73,5 +98,13 @@ public class Mexico implements TiendaVirutalPais {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
     }
 }

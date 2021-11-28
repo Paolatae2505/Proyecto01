@@ -39,26 +39,27 @@ public class Departamento implements Producto {
         return productoFInal;
 
     }
-    public String getCodigo(){
-       codigo = nombre.charAt(0) 
-       +"-"+ nombre.charAt(1) +"-" + nombre.charAt(2);
-       return codigo;
+
+    public String getCodigo() {
+        codigo = nombre.charAt(0)
+                + "-" + nombre.charAt(1) + "-" + nombre.charAt(2);
+        return codigo;
+    }
+
+    public List<Producto> getListaProductos() {
+        return this.productos;
     }
 
     public void mostrarInformacion() {
         int i = 1;
         for (Producto producto : productos) {
-            System.out.println("Numero de producto :" + i);
+            System.out.println("Número de producto :" + i);
             producto.mostrarInformacion();
             i++;
         }
     }
 
-    public List<Producto> getListaDeProductos() {
-        return productos;
-    }
-
-    public void agregarProducto(ProductoCheemsMart producto) {
+    public void agregarProducto(Producto producto) {
         productos.add(producto);
     }
 

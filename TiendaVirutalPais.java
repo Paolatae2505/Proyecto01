@@ -17,5 +17,8 @@ public interface TiendaVirutalPais {
 
     public void despedida();
 
+    public void mostrarMenuPrincipal();
+
+    public String getIdioma();
 
 }

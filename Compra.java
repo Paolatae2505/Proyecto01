@@ -22,7 +22,7 @@ public class Compra {
         }
     }
 
-    public void generarTicketDeCompra() {
+    public void generarTicketDeCompra(double total) {
         System.out.println("\n---------------------------------" +
                 "\n-------------Ticket--------------" +
                 "\n---------------------------------" +
@@ -31,12 +31,13 @@ public class Compra {
             System.out.println(p.getNombre() + " _____ " + p.getPrecio());
         }
         System.out.println("----------Total a pagar----------" +
-                /*+ "\n -- $" + String.format("%.2f", cobrarCliente() +*/
+                "\n -- $" + String.format("%.2f", total) +
                 "\n---------------------------------\n");
     }
 
     public List<ProductoCheemsMart> getCarritoDeCompra() {
         return this.carritoDeCompra;
     }
+
 
 }

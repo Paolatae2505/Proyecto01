@@ -1,4 +1,4 @@
-public class CatalogoTiendaProxy implements Catalogo{
+public class CatalogoTiendaProxy implements Catalogo {
 
     private CatalogoTienda catalogoTiendaReal;
     private String codigo;
@@ -7,47 +7,49 @@ public class CatalogoTiendaProxy implements Catalogo{
         this.catalogoTiendaReal = catalogoTiendaReal;
     }
 
-    public void mostrarDepartamento(String codigoDepto){
+    public void mostrarDepartamento(String codigoDepto) {
         //// revision del if ?
         catalogoTiendaReal.mostrarDepartamento(codigoDepto);
 
     }
-    /** 
-    public void mostrarDepartamentoDeBebidas() {
-        catalogoTiendaReal.mostrarDepartamentoDeBebidas();
+
+    /**
+     * public void mostrarDepartamentoDeBebidas() {
+     * catalogoTiendaReal.mostrarDepartamentoDeBebidas();
+     * }
+     * <p>
+     * public void mostrarDepartamentoDeBelleza() {
+     * catalogoTiendaReal.mostrarDepartamentoDeBelleza();
+     * }
+     * <p>
+     * public void mostrarDepartamentoDeDulces() {
+     * catalogoTiendaReal.mostrarDepartamentoDeDulces();
+     * }
+     * <p>
+     * public void mostrarDepartamentoDeAlimentosFrescos() {
+     * catalogoTiendaReal.mostrarDepartamentoDeAlimentosFrescos();
+     * }
+     * <p>
+     * public void mostrarDepartamentoElectrodomesticos() {
+     * catalogoTiendaReal.mostrarDepartamentoElectrodomesticos();
+     * }
+     * <p>
+     * public void mostrarDepartamentoEmpaquetados() {
+     * catalogoTiendaReal.mostrarDepartamentoEmpaquetados();
+     * }
+     * <p>
+     * public void mostrarDepartamentoElectronica() {
+     * catalogoTiendaReal.mostrarDepartamentoElectronica();
+     * }
+     */
+    public void menuDelCatalogo(String idioma) {
+        catalogoTiendaReal.menuDelCatalogo(idioma);
     }
 
-    public void mostrarDepartamentoDeBelleza() {
-        catalogoTiendaReal.mostrarDepartamentoDeBelleza();
-    }
-
-    public void mostrarDepartamentoDeDulces() {
-        catalogoTiendaReal.mostrarDepartamentoDeDulces();
-    }
-
-    public void mostrarDepartamentoDeAlimentosFrescos() {
-        catalogoTiendaReal.mostrarDepartamentoDeAlimentosFrescos();
-    }
-
-    public void mostrarDepartamentoElectrodomesticos() {
-        catalogoTiendaReal.mostrarDepartamentoElectrodomesticos();
-    }
-
-    public void mostrarDepartamentoEmpaquetados() {
-        catalogoTiendaReal.mostrarDepartamentoEmpaquetados();
-    }
-
-    public void mostrarDepartamentoElectronica() {
-        catalogoTiendaReal.mostrarDepartamentoElectronica();
-    }
-    */
-    public void menuDelCatalogo(){
-         catalogoTiendaReal.menuDelCatalogo();
-    }
-
-    public AlmacenCheemsMart getAlmacenCheemsMart(){
+    public AlmacenCheemsMart getAlmacenCheemsMart() {
         return catalogoTiendaReal.getAlmacenCheemsMart();
     }
+
     public String getCodigo() {
         String codigo = "";
         if (checarAcceso()) {

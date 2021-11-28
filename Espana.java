@@ -3,8 +3,24 @@ import java.util.List;
 
 public class Espana implements TiendaVirutalPais {
     private double descuento = 0;
-    private volatile static TiendaVirutalPais tiendaVirtualEspana;
+    private volatile static Espana tiendaVirtualEspana;
     private Cliente cliente;
+    private String idioma = "espanol";
+
+    private Espana(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public static Espana obtenerTiendaVirtualEspana(Cliente cliente) {
+        if (tiendaVirtualEspana == null) {
+            synchronized (TiendaVirutalPais.class) {
+                if (tiendaVirtualEspana == null) {
+                    tiendaVirtualEspana = new Espana(cliente);
+                }
+            }
+        }
+        return tiendaVirtualEspana;
+    }
 
     public void saludo() {
         System.out.println("Bienvenido(a) a Cheems Mart España!");
@@ -32,7 +48,7 @@ public class Espana implements TiendaVirutalPais {
         return "Tienes un " + descuento + "% de descuento en electrodométicos!";
     }
 
-    public void mensajeDeAgregarAlCarrito(){
+    public void mensajeDeAgregarAlCarrito() {
 
         System.out.println("Dijite el numero del producto que quereis Agregar al Carrito");
 
@@ -49,6 +65,10 @@ public class Espana implements TiendaVirutalPais {
                 "\nVuelva pronto!");
     }
 
+    public void mostrarMenuPrincipal() {
+
+    }
+
     public double getDescuento() {
         return descuento;
     }
@@ -61,7 +81,7 @@ public class Espana implements TiendaVirutalPais {
         return tiendaVirtualEspana;
     }
 
-    public static void setTiendaVirtualEspana(TiendaVirutalPais tiendaVirtualEspana) {
+    public static void setTiendaVirtualEspana(Espana tiendaVirtualEspana) {
         Espana.tiendaVirtualEspana = tiendaVirtualEspana;
     }
 
@@ -71,5 +91,13 @@ public class Espana implements TiendaVirutalPais {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
     }
 }
