@@ -21,4 +21,6 @@ public interface TiendaVirutalPais {
 
     public String getIdioma();
 
+    public String menuCatalogo();
+
 }

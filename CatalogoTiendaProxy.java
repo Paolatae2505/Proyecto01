@@ -42,8 +42,8 @@ public class CatalogoTiendaProxy implements Catalogo {
      * catalogoTiendaReal.mostrarDepartamentoElectronica();
      * }
      */
-    public void menuDelCatalogo(String idioma) {
-        catalogoTiendaReal.menuDelCatalogo(idioma);
+    public void menuDelCatalogo(String menu) {
+        catalogoTiendaReal.menuDelCatalogo(menu);
     }
 
     public AlmacenCheemsMart getAlmacenCheemsMart() {

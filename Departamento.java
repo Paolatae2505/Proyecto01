@@ -53,7 +53,7 @@ public class Departamento implements Producto {
     public void mostrarInformacion() {
         int i = 1;
         for (Producto producto : productos) {
-            System.out.println("Número de producto :" + i);
+            System.out.print(i +") ");
             producto.mostrarInformacion();
             i++;
         }

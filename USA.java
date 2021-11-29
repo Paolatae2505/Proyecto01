@@ -3,24 +3,10 @@ import java.util.List;
 
 public class USA implements TiendaVirutalPais {
     private double descuento = 0;
-    private volatile static USA tiendaVirtualUSA;
     private Cliente cliente;
     private String idioma = "ingles";
 
-    private USA(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public static USA obtenerTiendaVirtualEspana(Cliente cliente) {
-        if (tiendaVirtualUSA == null) {
-            synchronized (TiendaVirutalPais.class) {
-                if (tiendaVirtualUSA == null) {
-                    tiendaVirtualUSA = new USA(cliente);
-                }
-            }
-        }
-        return tiendaVirtualUSA;
-    }
+  
 
     public void saludo() {
         System.out.println("Welcome to Cheems Mart USA!");
@@ -66,15 +52,32 @@ public class USA implements TiendaVirutalPais {
 
     public void mostrarMenuPrincipal() {
         System.out.println("---------------------------------------------");
-        System.out.println("---------- ¡Welcome to CheemsMart! ----------");
-        System.out.println("---------------------------------------------");
-        System.out.println("-------------- Elige una opción -------------");
-        System.out.println("-1 --- Ver Catálogo -------------------------");
-        System.out.println("-2 --- Realizar Compra ----------------------");
+        System.out.println("------------- Choose an option  --------------");
+        System.out.println("-1 --- View catalog -------------------------");
+        System.out.println("-2 --- Make a purchase ----------------------");
         //System.out.println("-3 --- Realizar Pago ------------------------");
-        System.out.println("-3 --- Salir --------------------------------");
+        System.out.println("-3 --- Exit --------------------------------");
         System.out.println("---------------------------------------------");
     }
+
+    public String menuCatalogo(){
+        String menuCatalogo = "---------------------------------------------\n" +
+        "---------- CheemsMart Catalog ---------------\n" + 
+        "---------------------------------------------\n" +
+        "----------------Departments------------------\n" +
+        "-1 --- Beauty ------------------------------- \n" +
+        "-2 --- Electronics --------------------------\n" +
+        "-3 --- Home Appliances ----------------------\n" + 
+        "-4 --- Drinks ------------------------------- \n" +
+        "-5 --- Fresh Produce ------------------------ \n" +
+        "-6 --- Canned Foods ------------------------- \n" +
+        "-7 --- Sweets ------------------------------- \n" +
+        "-8 Exit       ------------------------------- \n" +
+        "---------------------------------------------";
+        return menuCatalogo;
+    }
+
+    
 
     public double getDescuento() {
         return descuento;
@@ -83,15 +86,6 @@ public class USA implements TiendaVirutalPais {
     public void setDescuento(double descuento) {
         this.descuento = descuento;
     }
-
-    public static TiendaVirutalPais getTiendaVirtual() {
-        return tiendaVirtualUSA;
-    }
-
-    public static void setTiendaVirtualUSA(USA tiendaVirtualUSA) {
-        USA.tiendaVirtualUSA = tiendaVirtualUSA;
-    }
-
     public Cliente getCliente() {
         return cliente;
     }

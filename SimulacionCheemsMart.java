@@ -13,10 +13,12 @@ public class SimulacionCheemsMart {
                 almacenCheemsMart);
         facadeSimulacion.inscibirUsuariosDefault();
         boolean salirSesion = false;
+        boolean salir = false;
         while (!salirSesion) {
             facadeSimulacion.iniciarSesion();
             interfaz = facadeSimulacion.getInterfaz();
             interfaz.saludo();
+            while(salir == false){
             interfaz.mostrarMenuPrincipal();
             int opcion = entrada.nextInt();
             switch (opcion) {
@@ -26,12 +28,15 @@ public class SimulacionCheemsMart {
                     break;
 
                 case 2:
-                    facadeSimulacion.verCatalogoYComprar();  //mismo que verCatalogo pero con las opciones de
+                    facadeSimulacion.agregraAlcarrito();
+                    facadeSimulacion.pagarCarritoDeCompra();
+                     //mismo que verCatalogo pero con las opciones de
                     // salir o pagar van con esta opcion
                     break;
 
                 case 3:
-                    salirSesion = true;
+                    interfaz.despedida();
+                    salir = true;
                     break;
 
                 case 5:
@@ -39,6 +44,9 @@ public class SimulacionCheemsMart {
                     System.out.println("Digite un numero positivo menor a 4!!!!");
 
             }
+
+            }
+            
 
         }
 

@@ -3,24 +3,9 @@ import java.util.List;
 
 public class Mexico implements TiendaVirutalPais {
     private double descuento = 0;
-    private volatile static Mexico tiendaVirtualMexico;
     private Cliente cliente;
+    private boolean aplicarDescuento;
     private String idioma = "espanol";
-
-    private Mexico(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public static Mexico obtenerTiendaVirtualEspana(Cliente cliente) {
-        if (tiendaVirtualMexico == null) {
-            synchronized (TiendaVirutalPais.class) {
-                if (tiendaVirtualMexico == null) {
-                    tiendaVirtualMexico = new Mexico(cliente);
-                }
-            }
-        }
-        return tiendaVirtualMexico;
-    }
 
     public void saludo() {
         System.out.println("Bienvenida(o) a Cheems Mart Mexico!");
@@ -66,8 +51,6 @@ public class Mexico implements TiendaVirutalPais {
 
     public void mostrarMenuPrincipal() {
         System.out.println("---------------------------------------------");
-        System.out.println("--------- ¡Bienvenido a CheemsMart! ---------");
-        System.out.println("---------------------------------------------");
         System.out.println("-------------- Elige una opción -------------");
         System.out.println("-1 --- Ver Catálogo -------------------------");
         System.out.println("-2 --- Realizar Compra ----------------------");
@@ -75,21 +58,29 @@ public class Mexico implements TiendaVirutalPais {
         System.out.println("-3 --- Salir --------------------------------");
         System.out.println("---------------------------------------------");
     }
-
+    
+    public String menuCatalogo(){
+        String menuCatalogo = "---------------------------------------------\n"+
+         "---------- Catálogo CheemsMart --------------\n" +
+         "---------------------------------------------\n" + 
+         "----------------Departamentos----------------\n" + 
+         "1 --- Belleza ------------------------------\n" + 
+         "-2 --- Electrónica --------------------------\n" + 
+         "-3 --- Electrodomésticos --------------------\n" +
+         "-4 --- Bebidas ------------------------------\n"+
+         "-5 --- Alimentos Frescos --------------------\n" + 
+         "-6 --- Empaquetados -------------------------\n" +
+         "-7 --- Dulces -------------------------------\n" +
+         "-8 Salir      -------------------------------\n"+ 
+         "---------------------------------------------";
+         return menuCatalogo;
+    }
     public double getDescuento() {
         return descuento;
     }
 
     public void setDescuento(double descuento) {
         this.descuento = descuento;
-    }
-
-    public static TiendaVirutalPais getTiendaVirtual() {
-        return tiendaVirtualMexico;
-    }
-
-    public static void setTiendaVirtualMexico(Mexico tiendaVirtualMexico) {
-        Mexico.tiendaVirtualMexico = tiendaVirtualMexico;
     }
 
     public Cliente getCliente() {

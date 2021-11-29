@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- **/
-
-
 public class AlmacenCheemsMart implements Producto {
 
     private double precio;
     private List<Producto> departamentos = new ArrayList<Producto>();
 
-    public void inventario() {
+     
+    public AlmacenCheemsMart(){
+        inventario();
+    }
+    
+    private void inventario() {
         llenarDepartamentoDeAlimentosFrescos();
         llenarDepartamentoDeBebidas();
         llenarDepartamentoDeBelleza();
@@ -20,10 +20,11 @@ public class AlmacenCheemsMart implements Producto {
         llenarDepartamentoDeElectronica();
         llenarDepartamentoDeEmpaquetados();
     }
-
+    /** 
     public void llenarDepartamento(Producto nuevoProducto, String codigoDepto) {
         //agregar al almacen y al depto
     }
+    */
 
     public void llenarDepartamentoDeElectronica() {
         Departamento deptoElectronica = new Departamento("Electronica");
@@ -46,7 +47,7 @@ public class AlmacenCheemsMart implements Producto {
     }
 
     public void llenarDepartamentoDeAlimentosFrescos() {
-        Departamento deptoAlimentosFrescos = new Departamento("Alimentos Frescos");
+        Departamento deptoAlimentosFrescos = new Departamento("Frescos");
         departamentos.add(deptoAlimentosFrescos);
         deptoAlimentosFrescos.agregarProducto(new ProductoCheemsMart("Pollo 1kg", 98, "Alimentos Frescos"));
         deptoAlimentosFrescos.agregarProducto(new ProductoCheemsMart("Pescado 1kg", 102.50, "Alimentos Frescos"));
@@ -56,7 +57,7 @@ public class AlmacenCheemsMart implements Producto {
     }
 
     public void llenarDepartamentoDeElectrodomesticos() {
-        Departamento deptoDom = new Departamento("Electrodomesticos");
+        Departamento deptoDom = new Departamento("Domesticos");
         departamentos.add(deptoDom);
         deptoDom.agregarProducto(new ProductoCheemsMart("Lavadora", 12560, "Electrodomesticos"));
         deptoDom.agregarProducto(new ProductoCheemsMart("Secadora HD", 13067, "Electrodomesticos"));
@@ -123,7 +124,7 @@ public class AlmacenCheemsMart implements Producto {
     }
 
     public void agregarProducto(Producto nuevoProducto, String codigoDepto) {
-        //pendiente
+         /// pendiente
     }
 
     public void eliminarProducto(Producto producto, String codigoDepto) {
@@ -131,10 +132,11 @@ public class AlmacenCheemsMart implements Producto {
     }
 
     public String getNombre() {
-        return this.getNombre(); //?
+        return "Almacen CheemsMart";
     }
 
     public double getPrecio() {
+        //// Calcular la suma de todos los dep 
         return this.precio;
     }
 

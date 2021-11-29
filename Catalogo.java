@@ -5,5 +5,7 @@ public interface Catalogo {
 
     public AlmacenCheemsMart getAlmacenCheemsMart();
 
+    public void menuDelCatalogo(String menu);
+
     
 }
