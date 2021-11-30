@@ -5,6 +5,6 @@ public interface Sujeto {
 
     public void eliminarCliente(ClienteTienda clienteTienda);
 
-    public void notificarCliente();
+    public void notificarCliente(double descuento);
     
 }

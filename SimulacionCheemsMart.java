@@ -1,6 +1,16 @@
 import java.util.Scanner;
 
 public class SimulacionCheemsMart {
+
+    public static boolean aplicarDescuento(){
+        int [] binarios = {0,1,0,1};
+        int numeroRandom = (int) (Math.random() * 3);
+        if(numeroRandom == 0){
+             return false;
+        }else{
+            return true;
+        }
+    }
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         Compra compraCliente = new Compra();
@@ -14,8 +24,10 @@ public class SimulacionCheemsMart {
         facadeSimulacion.inscibirUsuariosDefault();
         boolean salirSesion = false;
         boolean salir = false;
-        while (!salirSesion) {
-            facadeSimulacion.iniciarSesion();
+        boolean descuento = false;
+        while (!salirSesion){
+            descuento = aplicarDescuento();
+            facadeSimulacion.iniciarSesion(descuento);
             interfaz = facadeSimulacion.getInterfaz();
             interfaz.saludo();
             while(salir == false){

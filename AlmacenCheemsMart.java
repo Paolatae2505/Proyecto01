@@ -89,11 +89,11 @@ public class AlmacenCheemsMart implements Producto {
     public void llenarDepartamentoDeDulces() {
         Departamento deptoDulces = new Departamento("Dulces");
         departamentos.add(deptoDulces);
-        deptoDulces.agregarProducto(new ProductoCheemsMart("Reloj", 6800, "Electronica"));
-        deptoDulces.agregarProducto(new ProductoCheemsMart("Televisión HD", 7200, "Electronica"));
-        deptoDulces.agregarProducto(new ProductoCheemsMart("Radio", 600, "Electronica"));
-        deptoDulces.agregarProducto(new ProductoCheemsMart("iPod", 13000, "Electronica"));
-        deptoDulces.agregarProducto(new ProductoCheemsMart("x-box", 6064, "Electronica"));
+        deptoDulces.agregarProducto(new ProductoCheemsMart("Mangos Enchilados",40, "Dulces"));
+        deptoDulces.agregarProducto(new ProductoCheemsMart("Bombones", 30, "Dulces"));
+        deptoDulces.agregarProducto(new ProductoCheemsMart("Chocolate Ferrero Rocha",200, "Dules"));
+        deptoDulces.agregarProducto(new ProductoCheemsMart("Gomitas Cola De Unicornio",24, "Dulces"));
+        deptoDulces.agregarProducto(new ProductoCheemsMart("Hormiguitas Picosas",2, "Dulces"));
     }
 
     /**

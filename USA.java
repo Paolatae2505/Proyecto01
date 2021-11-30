@@ -5,8 +5,12 @@ public class USA implements TiendaVirutalPais {
     private double descuento = 0;
     private Cliente cliente;
     private String idioma = "ingles";
-
+    private boolean aplicarDescuento;
   
+    
+    public USA(boolean aplicarDescuento){
+        this.aplicarDescuento = aplicarDescuento;
+    }
 
     public void saludo() {
         System.out.println("Welcome to Cheems Mart USA!");
@@ -15,17 +19,20 @@ public class USA implements TiendaVirutalPais {
     public double cobrar(List<ProductoCheemsMart> carritoDeCompra) {
         double cuenta = 0;
         for (ProductoCheemsMart p : carritoDeCompra) {
-            if (p.getDepartamento().equals("Electronicos")) {
-                cuenta = cuenta + ((p.getPrecio() * descuento) / 100);
-            } else {
+            if(aplicarDescuento){
+                if (p.getDepartamento().equals("Electronicos")) {
+                    cuenta = cuenta + ((p.getPrecio() * descuento) / 100);
+                }
+            }else{
                 cuenta = cuenta + p.getPrecio();
             }
         }
         return cuenta;
     }
 
+  
     public double descuentoRandom() {
-        descuento = (((int) (Math.random() * (5 - 1))) + 1) * 10;
+        this.descuento = (((int) (Math.random() * (5 - 1))) + 1) * 10;
         return descuento;
     }
 
@@ -78,7 +85,7 @@ public class USA implements TiendaVirutalPais {
     }
 
     
-
+     
     public double getDescuento() {
         return descuento;
     }
@@ -100,5 +107,9 @@ public class USA implements TiendaVirutalPais {
 
     public void setIdioma(String idioma) {
         this.idioma = idioma;
+    }
+
+    public void setAplicarDescuento(boolean aplicarDescuento){
+      this.aplicarDescuento = aplicarDescuento;
     }
 }

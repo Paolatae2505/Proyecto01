@@ -31,27 +31,28 @@ public class FacadeSimulacion {
         cheemsMart.agregarCliente(cliente2);
     }
 
-    private void seleccionarInterfazDeUsuario(String pais) {
+    private void seleccionarInterfazDeUsuario(String pais,boolean aplicarDescuento) {
 
         switch (pais) {
             case "Mexico":
 
-                interfazUsuario = new Mexico();
+                interfazUsuario = new Mexico(aplicarDescuento);
                 break;
 
             case "USA":
 
-                interfazUsuario = new USA();
+                interfazUsuario = new USA(aplicarDescuento);
                 break;
 
             case "España":
 
-                interfazUsuario = new Espana();
+                interfazUsuario = new Espana(aplicarDescuento);
                 break;
         }
     }
-
-    public void iniciarSesion() {
+    
+  
+    public void iniciarSesion(boolean aplicarDescuento) {
         Scanner entrada = new Scanner(System.in);
         HashMap<ClienteTienda, List<ProductoCheemsMart>> clientesTienda =
                 cheemsMart.getClientesTienda();
@@ -90,8 +91,13 @@ public class FacadeSimulacion {
             }
         }
         this.cliente = cheemsMart.getClienteProxy(IDCliente);
-        seleccionarInterfazDeUsuario(pais);
+        seleccionarInterfazDeUsuario(pais,aplicarDescuento);
         cheemsMart.setInterfaz(interfazUsuario);
+        if(aplicarDescuento){
+          double descuento = interfazUsuario.descuentoRandom();
+          cheemsMart.notificarCliente(descuento);
+          cliente.revisarCorreo();
+        }
     }
 
     public void verCatalogo() {
@@ -155,75 +161,7 @@ public class FacadeSimulacion {
 
     }
 
-    public void verCatalogoYComprar() {
-        Scanner entrada = new Scanner(System.in);
-        //boolean salir = false;
-        int salirDeComprar = -1;
-        while (salirDeComprar == -1) {
-            String menuCatalogo = interfazUsuario.menuCatalogo();
-            catalogo.menuDelCatalogo(menuCatalogo);
-            int opcion = entrada.nextInt();
-            switch (opcion) {
-
-                case 1:
-                    catalogo.mostrarDepartamento("B-e-l");
-                    break;
-
-                case 2:
-                    catalogo.mostrarDepartamento("E-l-e");
-                    break;
-
-                case 3:
-                    ///Electrodomesticos
-                    catalogo.mostrarDepartamento("D-o-m");
-
-                    break;
-
-                case 4:
-                    catalogo.mostrarDepartamento("B-e-b");
-
-                    break;
-
-                case 5:
-                    ///Alimentos Frescos
-                    catalogo.mostrarDepartamento("F-r-e");
-
-                    break;
-
-                case 6:
-                    catalogo.mostrarDepartamento("E-m-p");
-                    break;
-
-                case 7:
-                    catalogo.mostrarDepartamento("D-u-l");
-                    break;
-
-                case 8:
-                    if (interfazUsuario.getIdioma().equals("espanol")) {
-                        System.out.println("Pagar");
-                    } else {
-                        if (interfazUsuario.getIdioma().equals("ingles")) {
-                            System.out.println("Pay");
-                        }
-                    }
-
-                case 9:
-                    salirDeComprar = 2;
-                    break;
-
-                default:
-                    if (interfazUsuario.getIdioma().equals("espanol")) {
-                        System.out.println("Digita una opción válida...");
-                    } else {
-                        if (interfazUsuario.getIdioma().equals("ingles")) {
-                            System.out.println("Type a valid input...");
-                        }
-                    }
-            }
-        }
-
-    }
-
+ 
     public void agregraAlcarrito() {
         Scanner entrada = new Scanner(System.in);
         boolean salir = false;
@@ -293,7 +231,7 @@ public class FacadeSimulacion {
                     break;
 
                 case 7:
-                    catalogo.mostrarDepartamento("Dul");
+                    catalogo.mostrarDepartamento("D-ul-");
                     interfazUsuario.mensajeDeAgregarAlCarrito();
                     producto = entrada.nextInt();
                     productoCheemsMart = (ProductoCheemsMart) almacenCheemsMart.getProducto(producto, "Dulces");

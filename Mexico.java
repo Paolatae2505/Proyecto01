@@ -7,6 +7,11 @@ public class Mexico implements TiendaVirutalPais {
     private boolean aplicarDescuento;
     private String idioma = "espanol";
 
+
+    public Mexico(boolean aplicarDescuento){
+        this.aplicarDescuento = aplicarDescuento;
+    }
+
     public void saludo() {
         System.out.println("Bienvenida(o) a Cheems Mart Mexico!");
     }
@@ -14,9 +19,11 @@ public class Mexico implements TiendaVirutalPais {
     public double cobrar(List<ProductoCheemsMart> carritoDeCompra) {
         double cuenta = 0;
         for (ProductoCheemsMart p : carritoDeCompra) {
-            if (p.getDepartamento().equals("Alimentos")) {
-                cuenta = cuenta + ((p.getPrecio() * descuento) / 100);
-            } else {
+            if(aplicarDescuento){
+                if (p.getDepartamento().equals("Alimentos")) {
+                    cuenta = cuenta + ((p.getPrecio() * descuento) / 100);
+                } 
+            }else {
                 cuenta = cuenta + p.getPrecio();
             }
         }
@@ -24,7 +31,7 @@ public class Mexico implements TiendaVirutalPais {
     }
 
     public double descuentoRandom() {
-        descuento = (((int) (Math.random() * (5 - 1))) + 1) * 10;
+        this.descuento = (((int) (Math.random() * (5 - 1))) + 1) * 10;
         return descuento;
     }
 

@@ -1,4 +1,4 @@
-public class ClienteTienda {
+public class ClienteTienda implements Cliente{
 
     private String nombreUsuario;
     private String nombre;
@@ -7,7 +7,6 @@ public class ClienteTienda {
     private String direccion;
     private CuentaBancaria cuentaBancaria;
     private String pais;
-    private String notificacion;
     private Correo correo;
     private String ID;
     private static int numeroID = 0;
@@ -22,6 +21,7 @@ public class ClienteTienda {
         this.pais = pais;
         ID = this.nombre.charAt(0) + this.nombreUsuario.charAt(0) + "CM-" + numeroID;
         numeroID++;
+        correo = new Correo();
     }
 
     public void pagarCompra(double dinero) {
@@ -42,10 +42,13 @@ public class ClienteTienda {
 
     }
 
+    public void revisarCorreo(){
+          System.out.println(correo.getNotificacion());
+    }
+
     public CuentaBancaria getCuentaBancaria() {
         return cuentaBancaria;
     }
-
     public Correo getCorreo() {
         return correo;
     }

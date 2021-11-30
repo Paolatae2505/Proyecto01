@@ -12,7 +12,9 @@ public class ClienteTiendaProxy implements Cliente {
     public void reportar() {
         clienteReal.reportar();
     }
-
+    public void revisarCorreo(){
+        clienteReal.revisarCorreo();
+    }
     public boolean verificarCuenta(String numeroDeCuenta) {
         String numeroDeCuentaReal = clienteReal.getCuentaBancaria().getNumeroDeCuenta();
         return numeroDeCuenta.equals(numeroDeCuentaReal);

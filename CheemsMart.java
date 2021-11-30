@@ -13,7 +13,6 @@ public class CheemsMart implements Sujeto {
         clientesTienda.put(cliente, null);
         ClienteTiendaProxy clienteTiendaProxy = new ClienteTiendaProxy(cliente);
         clientesTiendaProxy.add(clienteTiendaProxy);
-
     }
 
     public void eliminarCliente(ClienteTienda cliente) {
@@ -30,9 +29,10 @@ public class CheemsMart implements Sujeto {
 
     }
 
-    public void notificarCliente() {
-        double descuento = interfazUsuario.descuentoRandom();
+    public void notificarCliente(double descuento) {
+        //double descuento = interfazUsuario.get
         String notificacion = interfazUsuario.mensajeDescuento(descuento);
+        System.out.println(notificacion);
         /*for (Map.Entry<ClienteTienda, List<Producto>> entry : clientesTienda.entrySet()) {
               Correo correo = entry.getKey().getCorreo();
               correo.recibirNotificacion(notificacion);
