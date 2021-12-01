@@ -46,7 +46,7 @@ public class SucursalUSA implements Sucursal {
     public boolean tieneDescuento() {
         int[] binarios = {0, 1, 0, 1};
         int numeroRandom = (int) (Math.random() * 3);
-        return numeroRandom != 0;
+        return binarios[numeroRandom] != 0;
     }
 
     public double descuentoRandom() {

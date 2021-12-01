@@ -49,11 +49,7 @@ public class SucursalMexico implements Sucursal {
     public boolean tieneDescuento() {
         int[] binarios = {0, 1, 0, 1};
         int numeroRandom = (int) (Math.random() * 3);
-        if (numeroRandom == 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return binarios[numeroRandom] != 0;
     }
 
 }
