@@ -1,12 +1,12 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
+import java.util.ArrayList;
+public class AlmacenCheemsMart {
 
-public class AlmacenCheemsMart implements Producto {
+    private HashMap<String,List<Producto>> departamentos = new HashMap<>();
 
-    private double precio;
-    private List<Producto> departamentos = new ArrayList<Producto>();
-
-     
     public AlmacenCheemsMart(){
         inventario();
     }
@@ -20,136 +20,120 @@ public class AlmacenCheemsMart implements Producto {
         llenarDepartamentoDeElectronica();
         llenarDepartamentoDeEmpaquetados();
     }
-    /** 
-    public void llenarDepartamento(Producto nuevoProducto, String codigoDepto) {
-        //agregar al almacen y al depto
-    }
-    */
 
     public void llenarDepartamentoDeElectronica() {
-        Departamento deptoElectronica = new Departamento("Electronica");
-        departamentos.add(deptoElectronica);
-        deptoElectronica.agregarProducto(new ProductoCheemsMart("Reloj", 6800, "Electronica"));
-        deptoElectronica.agregarProducto(new ProductoCheemsMart("Televisión HD", 7200, "Electronica"));
-        deptoElectronica.agregarProducto(new ProductoCheemsMart("Radio", 600, "Electronica"));
-        deptoElectronica.agregarProducto(new ProductoCheemsMart("iPod", 13000, "Electronica"));
-        deptoElectronica.agregarProducto(new ProductoCheemsMart("x-box", 6064, "Electronica"));
+        List<Producto> productos = new ArrayList<>();
+        productos.add(new Producto("Reloj", 6800, "Electronica"));
+        productos.add(new Producto("Televisión HD", 7200, "Electronica"));
+        productos.add(new Producto("Radio", 600, "Electronica"));
+        productos.add(new Producto("iPod", 13000, "Electronica"));
+        productos.add(new Producto("x-box", 6064, "Electronica"));
+        departamentos.put("Electronica", productos);
     }
 
     public void llenarDepartamentoDeBelleza() {
-        Departamento deptoBelleza = new Departamento("Belleza");
-        departamentos.add(deptoBelleza);
-        deptoBelleza.agregarProducto(new ProductoCheemsMart("Labial Revon", 240, "Belleza"));
-        deptoBelleza.agregarProducto(new ProductoCheemsMart("Barniz de uñas Revon", 275, "Belleza"));
-        deptoBelleza.agregarProducto(new ProductoCheemsMart("Mascara de Pestañas Revon", 300, "Belleza"));
-        deptoBelleza.agregarProducto(new ProductoCheemsMart("Rubor Revon", 290, "Belleza"));
-        deptoBelleza.agregarProducto(new ProductoCheemsMart("Polvo Compacto Revon", 290, "Belleza"));
+        List<Producto> productos = new ArrayList<>();
+        productos.add(new Producto("Labial Revon", 240, "Belleza"));
+        productos.add(new Producto("Barniz de uñas Revon", 275, "Belleza"));
+        productos.add(new Producto("Mascara de Pestañas Revon", 300, "Belleza"));
+        productos.add(new Producto("Rubor Revon", 290, "Belleza"));
+        productos.add(new Producto("Polvo Compacto Revon", 290, "Belleza"));
+        departamentos.put("Belleza", productos);
     }
 
     public void llenarDepartamentoDeAlimentosFrescos() {
-        Departamento deptoAlimentosFrescos = new Departamento("Frescos");
-        departamentos.add(deptoAlimentosFrescos);
-        deptoAlimentosFrescos.agregarProducto(new ProductoCheemsMart("Pollo 1kg", 98, "Alimentos Frescos"));
-        deptoAlimentosFrescos.agregarProducto(new ProductoCheemsMart("Pescado 1kg", 102.50, "Alimentos Frescos"));
-        deptoAlimentosFrescos.agregarProducto(new ProductoCheemsMart("Mandarinas 1kg", 32, "Alimentos Frescos"));
-        deptoAlimentosFrescos.agregarProducto(new ProductoCheemsMart("Granada 1kg", 60, "Alimentos Frescos"));
-        deptoAlimentosFrescos.agregarProducto(new ProductoCheemsMart("Lechuga 1kg", 15, "Alimentos Frescos"));
+         List<Producto> productos = new ArrayList<>();
+        productos.add(new Producto("Pollo 1kg",
+         98, "Alimentos :Frescos"));
+        productos.add(new Producto("Pescado 1kg", 102.50,
+        "Alimentos :Frescos"));
+        productos.add(new Producto("Mandarinas 1kg", 32, 
+        "Alimentos :Frescos"));
+        productos.add(new Producto("Granada 1kg", 
+        60, "Alimentos :Frescos"));
+        productos.add(new Producto("Lechuga 1kg", 15,
+         "Alimentos :Frescos"));
+         departamentos.put( "Alimentos :Frescos", productos);
     }
 
     public void llenarDepartamentoDeElectrodomesticos() {
-        Departamento deptoDom = new Departamento("Domesticos");
-        departamentos.add(deptoDom);
-        deptoDom.agregarProducto(new ProductoCheemsMart("Lavadora", 12560, "Electrodomesticos"));
-        deptoDom.agregarProducto(new ProductoCheemsMart("Secadora HD", 13067, "Electrodomesticos"));
-        deptoDom.agregarProducto(new ProductoCheemsMart("Licuadora", 970, "Electrodomesticos"));
-        deptoDom.agregarProducto(new ProductoCheemsMart("Tostadora", 895, "Electrodomesticos"));
-        deptoDom.agregarProducto(new ProductoCheemsMart("Sandwichera", 579, "Electrodomesticos"));
+        List<Producto> productos = new ArrayList<>();
+        productos.add(new Producto("Lavadora", 12560, 
+        "Electrodomesticos"));
+        productos.add(new Producto("Secadora HD", 13067,
+         "Electrodomesticos"));
+        productos.add(new Producto("Licuadora", 970,
+         "Electrodomesticos"));
+        productos.add(new Producto("Tostadora", 895,
+         "Electrodomesticos"));
+        productos.add(new Producto("Sandwichera", 579,
+         "Electrodomesticos"));
+         departamentos.put( "Electrodomesticos", productos);
     }
 
     public void llenarDepartamentoDeEmpaquetados() {
-        Departamento deptoEmpaquetados = new Departamento("Empaquetados");
-        departamentos.add(deptoEmpaquetados);
-        deptoEmpaquetados.agregarProducto(new ProductoCheemsMart("Frijoles", 49.90, "Empaquetados"));
-        deptoEmpaquetados.agregarProducto(new ProductoCheemsMart("Sopa Instanténea", 16, "Empaquetados"));
-        deptoEmpaquetados.agregarProducto(new ProductoCheemsMart("Tamales", 9, "Empaquetados"));
-        deptoEmpaquetados.agregarProducto(new ProductoCheemsMart("Sardinas", 39, "Empaquetados"));
-        deptoEmpaquetados.agregarProducto(new ProductoCheemsMart("Palmitos", 35, "Empaquetados"));
+        List<Producto> productos = new ArrayList<>();
+         productos.add(new Producto("Frijoles", 49.90, "Alimentos :Empaquetados"));
+         productos.add(new Producto("Sopa Instanténea", 16, "Alimentos :Empaquetados"));
+         productos.add(new Producto("Tamales", 9, "Alimentos :Empaquetados"));
+         productos.add(new Producto("Sardinas", 39, "Alimentos :Empaquetados"));
+         productos.add(new Producto("Palmitos", 35, "Alimentos :Empaquetados"));
+         departamentos.put("Alimentos :Empaquetados", productos);
     }
 
     public void llenarDepartamentoDeBebidas() {
-        Departamento deptoBebidas = new Departamento("Bebidas");
-        departamentos.add(deptoBebidas);
-        deptoBebidas.agregarProducto(new ProductoCheemsMart("CocaCola", 12, "Bebidas"));
-        deptoBebidas.agregarProducto(new ProductoCheemsMart("Mundet", 13, "Bebidas"));
-        deptoBebidas.agregarProducto(new ProductoCheemsMart("Leche Entera", 27, "Bebidas"));
-        deptoBebidas.agregarProducto(new ProductoCheemsMart("Agua Mineral", 21, "Bebidas"));
-        deptoBebidas.agregarProducto(new ProductoCheemsMart("Jugo de Naranja", 30, "Bebidas"));
+        List<Producto> productos = new ArrayList<>();
+         productos.add(new Producto("CocaCola", 12, "Bebidas"));
+         productos.add(new Producto("Mundet", 13, "Bebidas"));
+         productos.add(new Producto("Leche Entera", 27, "Bebidas"));
+         productos.add(new Producto("Agua Mineral", 21, "Bebidas"));
+         productos.add(new Producto("Jugo de Naranja", 30, "Bebidas"));
+         departamentos.put("Bebidas", productos);
     }
 
     public void llenarDepartamentoDeDulces() {
-        Departamento deptoDulces = new Departamento("Dulces");
-        departamentos.add(deptoDulces);
-        deptoDulces.agregarProducto(new ProductoCheemsMart("Mangos Enchilados",40, "Dulces"));
-        deptoDulces.agregarProducto(new ProductoCheemsMart("Bombones", 30, "Dulces"));
-        deptoDulces.agregarProducto(new ProductoCheemsMart("Chocolate Ferrero Rocha",200, "Dules"));
-        deptoDulces.agregarProducto(new ProductoCheemsMart("Gomitas Cola De Unicornio",24, "Dulces"));
-        deptoDulces.agregarProducto(new ProductoCheemsMart("Hormiguitas Picosas",2, "Dulces"));
+        List<Producto> productos = new ArrayList<>();
+         productos.add(new Producto("Mangos Enchilados",40, "Alimentos :Dulces"));
+         productos.add(new Producto("Bombones", 30, "Alimentos :Dulces"));
+         productos.add(new Producto("Chocolate Ferrero Rocha",200, "Alimentos :Dulces"));
+         productos.add(new Producto("Gomitas Cola De Unicornio",24, "Alimentos :Dulces"));
+         productos.add(new Producto("Hormiguitas",20,"Alimentos :Dulces"));
+         departamentos.put("Alimentos :Dulces", productos);
     }
 
-    /**
-     * Devuelve el departamento buscado mediante su atributo código.
-     *
-     * @param codigoDepto Código del deparamento a encontrar.
-     * @return d Departamento que coincide con el código.
-     */
-    public Producto getDepartamento(String codigoDepto) {
-        for (Producto d : departamentos) {
-            if (d.getCodigo().equals(codigoDepto)) {
-                return d;
+    public Producto getProducto(String nombreDepto, int numProducto) {
+        numProducto--;
+        List<Producto> productos = new ArrayList<>();
+        Producto producto = null;
+        for (Map.Entry<String,List<Producto>> entry : departamentos.entrySet()) {
+            if(entry.getKey().equals(nombreDepto)){
+                productos  = entry.getValue();
+                producto = productos.get(numProducto);
             }
         }
-        return null;
+        return producto;
     }
 
-
-    public Producto getProducto(int numeroProducto, String codigoDepto) {
-        List<Producto> productosDepto = new ArrayList<>();
-        for (Producto d : departamentos) {
-            if (d.getCodigo().equals(codigoDepto)) {
-                productosDepto = d.getListaProductos();
-                return productosDepto.get(numeroProducto);
+    public void mostrarDepartamento(String nombreDepto) {
+        List<Producto> productos = new ArrayList<>();
+        for (Map.Entry<String,List<Producto>> entry : departamentos.entrySet()) {
+            if(entry.getKey().equals(nombreDepto)){
+                productos  = entry.getValue();
             }
         }
-        return null;
+        mostrarProductosDepto(productos);
+        
     }
 
-    public void agregarProducto(Producto nuevoProducto, String codigoDepto) {
-         /// pendiente
+    private void mostrarProductosDepto(List<Producto> productos){
+        int i = 1;
+        for (Producto producto : productos) {
+            System.out.print(i +") ");
+            producto.mostrarInformacion();
+            i++;
+        }
     }
 
-    public void eliminarProducto(Producto producto, String codigoDepto) {
-        //pendiente
-    }
 
-    public String getNombre() {
-        return "Almacen CheemsMart";
-    }
-
-    public double getPrecio() {
-        //// Calcular la suma de todos los dep 
-        return this.precio;
-    }
-
-    public String getCodigo() {
-        return "CHEMS-1351";
-    }
-
-    public List<Producto> getListaProductos() {
-        return this.departamentos;
-    }
-
-    public void mostrarInformacion() {
-
-    }
-
+    
 }

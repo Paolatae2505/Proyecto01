@@ -1,14 +1,64 @@
-import java.util.List;
+import java.util.Random;
+public class Producto {
+    
+    private String nombre;
+    private double precio;
+    private String departamento;
+    private String codigoDeBarras;
 
-public interface Producto {
+    public Producto(String nombre, double precio,
+                              String departamento) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.departamento = departamento;
+        generadorCodigoDeBarras();
+    }
 
-    public double getPrecio();
+    private void generadorCodigoDeBarras() {
+        Random rand = new Random(1000);
+        this.codigoDeBarras = departamento.charAt(0)
+                + "-" + departamento.charAt(1) + "-" + departamento.charAt(2)
+                + nombre.charAt(0) + "-" + nombre.charAt(1) + "-" + nombre.charAt(2)
+                + rand.nextInt();
+    }
 
-    public String getNombre();
+    public double getPrecio() {
+        return precio;
+    }
 
-    public void mostrarInformacion();
+    public String getNombre() {
+        return nombre;
+    }
 
-    public String getCodigo();
+    public void mostrarInformacion() {
+        System.out.println("Nombre : " + nombre);
+        System.out.println("Precio : " + precio);
+        System.out.println("Departamento :" + departamento);
+        System.out.println("Codigo De Barras :" + codigoDeBarras);
+    }
 
-    public List<Producto> getListaProductos();
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    public String getCodigo() {
+        return this.codigoDeBarras;
+    }
+
+    public void setCodigoDeBarras(String codigoDeBarras) {
+        this.codigoDeBarras = codigoDeBarras;
+    }
+    
 }

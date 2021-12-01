@@ -1,67 +1,79 @@
 import java.util.Scanner;
 
 public class SimulacionCheemsMart {
-
-    public static boolean aplicarDescuento(){
-        int [] binarios = {0,1,0,1};
-        int numeroRandom = (int) (Math.random() * 3);
-        if(numeroRandom == 0){
-             return false;
-        }else{
-            return true;
-        }
-    }
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        Compra compraCliente = new Compra();
-        CheemsMart cheemsMart = new CheemsMart();
-        TiendaVirutalPais interfaz;
-        AlmacenCheemsMart almacenCheemsMart = new AlmacenCheemsMart();
-        CatalogoTienda catalogoReal = new CatalogoTienda(almacenCheemsMart);
-        CatalogoTiendaProxy catalogo = new CatalogoTiendaProxy(catalogoReal);
-        FacadeSimulacion facadeSimulacion = new FacadeSimulacion(catalogo, cheemsMart,
-                almacenCheemsMart);
-        facadeSimulacion.inscibirUsuariosDefault();
         boolean salirSesion = false;
+        CheemsMartCentral administrador = new CheemsMartCentral();
+        SucursalMexico sucursalMexico = new SucursalMexico(administrador.getClientesMexico());
+        SucursalEspana sucursalEspana = new SucursalEspana(administrador.getClientesEspana());
+        SucursalUSA sucursalUSA = new SucursalUSA(administrador.getClientesUSA());
+        ClienteTiendaProxy proxy = null;
+        boolean usuarioCorrecto = false;
+        boolean contrasenaCorrecta = false;
+        String nacionalidad;
+        InterfazPais interfazPais = null;
+        AlmacenCheemsMart almacenCheemsMart = new AlmacenCheemsMart();
+        CatalogoTienda catalogo = new CatalogoTienda(almacenCheemsMart);
+        CatalogoTiendaProxy catalogoProxy = new CatalogoTiendaProxy(catalogo);
+        Compra compra = new Compra();
         boolean salir = false;
         boolean descuento = false;
-        while (!salirSesion){
-            descuento = aplicarDescuento();
-            facadeSimulacion.iniciarSesion(descuento);
-            interfaz = facadeSimulacion.getInterfaz();
-            interfaz.saludo();
-            while(salir == false){
-            interfaz.mostrarMenuPrincipal();
-            int opcion = entrada.nextInt();
-            switch (opcion) {
-
-                case 1:
-                    facadeSimulacion.verCatalogo();
+        while (!salirSesion) {
+            while (!usuarioCorrecto || !contrasenaCorrecta) {
+                System.out.println("-------------------------------------------------------");
+                System.out.println("----Usuario :                --------------------------");
+                System.out.println("-------------------------------------------------------");
+                String usuario = entrada.nextLine();
+                System.out.println("-----Contraseña :            --------------------------");
+                String contrasena = entrada.nextLine();
+                System.out.println("-------------------------------------------------------");
+                String usuarioReal = "";
+                String contrasenaReal = "";
+                //////////////BUSCAR EN USA
+                proxy = sucursalUSA.verificarClienteExistente(contrasena, usuario);
+                /// mexico
+                /// ESPANA
+                if (proxy != null) {
+                    usuarioCorrecto = true;
+                    contrasenaCorrecta = true;
+                }
+            }
+            nacionalidad = proxy.getPais();
+            switch (nacionalidad) {
+                case "USA":
+                    interfazPais = new InterfazUSA(catalogoProxy, proxy, compra, sucursalUSA,
+                            almacenCheemsMart);
+                    sucursalUSA.setInterfaz(interfazPais);
+                    /*descuentoUSA = sucursalUSA.tieneDescuento();
+                    porcentajeDescuentoUSA = sucursalUSA.descuentoRandom();
+                    if (descuentoUSA) {
+                        administrador.notificarCliente(
+                                interfazPais.mensajeDeDescuento(porcentajeDescuentoUSA), "USA");
+                        System.out.println(interfazPais.mensajeDeDescuento
+                                (sucursalUSA.descuentoRandom()));
+                    }*/
+                    interfazPais.mostrarMenuPrincipal();
                     break;
 
-                case 2:
-                    facadeSimulacion.agregraAlcarrito();
-                    facadeSimulacion.pagarCarritoDeCompra();
-                     //mismo que verCatalogo pero con las opciones de
-                    // salir o pagar van con esta opcion
+                case "Mexico":
+
+                    interfazPais = new InterfazMexico(catalogoProxy, proxy, compra, sucursalUSA,
+                            almacenCheemsMart);
+                    sucursalMexico.setInterfaz(interfazPais);
                     break;
 
-                case 3:
-                    interfaz.despedida();
-                    salir = true;
+                case "Espana":
+
+                    interfazPais = new InterfazEspana(catalogoProxy, proxy, compra, sucursalUSA,
+                            almacenCheemsMart);
+                    sucursalEspana.setInterfaz(interfazPais);
                     break;
-
-                case 5:
-                    System.out.println("Esa no es una opción !!!!");
-                    System.out.println("Digite un numero positivo menor a 4!!!!");
-
             }
 
-            }
-            
+            interfazPais.mostrarMenuPrincipal();
 
         }
-
 
     }
 

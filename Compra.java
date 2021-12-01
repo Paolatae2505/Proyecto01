@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
-
 public class Compra {
 
-    private List<ProductoCheemsMart> carritoDeCompra = new ArrayList<>();
+    private List<Producto> carritoDeCompra = new ArrayList<>();
 
-    public void agregarProducto(ProductoCheemsMart producto) {
+    public void agregarProducto(Producto producto) {
         carritoDeCompra.add(producto);
     }
 
@@ -13,7 +12,7 @@ public class Compra {
         carritoDeCompra.clear();
     }
 
-    public void eliminarProducto(ProductoCheemsMart producto) {
+    public void eliminarProducto(Producto producto) {
         for (Producto p : carritoDeCompra) {
             if (!p.equals(producto)) {
                 System.out.println("No puedes remover el producto" + producto +
@@ -21,7 +20,9 @@ public class Compra {
             } else carritoDeCompra.remove(producto);
         }
     }
-
+    public boolean esVaciaLaCompra(){
+        return carritoDeCompra.isEmpty();
+    }
     public void generarTicketDeCompra(double total) {
         System.out.println("\n---------------------------------" +
                 "\n-------------Ticket--------------" +
@@ -35,9 +36,11 @@ public class Compra {
                 "\n---------------------------------\n");
     }
 
-    public List<ProductoCheemsMart> getCarritoDeCompra() {
+    public List<Producto> getCarritoDeCompra() {
+        System.out.println(carritoDeCompra.isEmpty());
+        System.out.println(carritoDeCompra.size());
         return this.carritoDeCompra;
     }
 
-
+    
 }

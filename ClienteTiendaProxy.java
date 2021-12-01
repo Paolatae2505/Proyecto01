@@ -1,6 +1,5 @@
 public class ClienteTiendaProxy implements Cliente {
 
-
     private ClienteTienda clienteReal;
     private String numeroDeCuenta;
     private boolean transaccionExitosa;
@@ -12,9 +11,11 @@ public class ClienteTiendaProxy implements Cliente {
     public void reportar() {
         clienteReal.reportar();
     }
-    public void revisarCorreo(){
+
+    public void revisarCorreo() {
         clienteReal.revisarCorreo();
     }
+
     public boolean verificarCuenta(String numeroDeCuenta) {
         String numeroDeCuentaReal = clienteReal.getCuentaBancaria().getNumeroDeCuenta();
         return numeroDeCuenta.equals(numeroDeCuentaReal);
@@ -22,6 +23,17 @@ public class ClienteTiendaProxy implements Cliente {
 
     public void numeroDeCuenta(String numeroDeCuenta) {
         this.numeroDeCuenta = numeroDeCuenta;
+    }
+
+    public boolean verificarContrasena(String contrasena) {
+        String contrasenaReal = clienteReal.getContraseña();
+        return contrasenaReal.equals(contrasena);
+    }
+
+    public boolean verificacionUsuario(String usuario) {
+        String usuarioReal = clienteReal.getUsuario();
+        return usuarioReal.equals(usuarioReal);
+
     }
 
     public void pagarCompra(double dinero) {
@@ -41,5 +53,13 @@ public class ClienteTiendaProxy implements Cliente {
 
     public String getID() {
         return clienteReal.getID();
+    }
+
+    public Correo getCorreo() {
+        return clienteReal.getCorreo();
+    }
+
+    public String getPais() {
+        return clienteReal.getPais();
     }
 }

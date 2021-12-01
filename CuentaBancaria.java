@@ -1,5 +1,5 @@
 public class CuentaBancaria {
-
+    
     private double dinero;
     private String numeroDeCuenta;
 
@@ -19,5 +19,5 @@ public class CuentaBancaria {
     public String getNumeroDeCuenta() {
         return this.numeroDeCuenta;
     }
-
+    
 }

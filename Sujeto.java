@@ -1,10 +1,9 @@
 public interface Sujeto {
 
+    public void agregarCliente(ClienteTienda clienteTienda,String pais);
 
-    public void agregarCliente(ClienteTienda clienteTienda);
+    public void eliminarCliente(ClienteTienda clienteTienda,String pais);
 
-    public void eliminarCliente(ClienteTienda clienteTienda);
-
-    public void notificarCliente(double descuento);
+    public void notificarCliente(String notificacion,String pais);
     
 }

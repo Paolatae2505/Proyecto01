@@ -1,5 +1,5 @@
 public class ClienteTienda implements Cliente{
-
+    
     private String nombreUsuario;
     private String nombre;
     private String contraseña;
@@ -12,7 +12,8 @@ public class ClienteTienda implements Cliente{
     private static int numeroID = 0;
 
     public ClienteTienda(String nombreUsuario, String nombre, String contraseña,
-                         String telefono, CuentaBancaria cuentaBancaria, String pais) {
+                         String telefono, CuentaBancaria cuentaBancaria, String pais,
+                         String direccion) {
         this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
         this.contraseña = contraseña;
@@ -22,6 +23,7 @@ public class ClienteTienda implements Cliente{
         ID = this.nombre.charAt(0) + this.nombreUsuario.charAt(0) + "CM-" + numeroID;
         numeroID++;
         correo = new Correo();
+        this.direccion = direccion;
     }
 
     public void pagarCompra(double dinero) {
@@ -68,5 +70,5 @@ public class ClienteTienda implements Cliente{
     public String getPais(){
         return pais;
     }
-
+    
 }
